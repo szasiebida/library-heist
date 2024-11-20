@@ -6,6 +6,7 @@ public class Room {
     private int w;
     private String name;
     private String description;
+    private boolean locked;
 
 
     //a value of -1 will indicate a dead end, no room in that direction
@@ -19,13 +20,14 @@ public class Room {
      * @param e represents the index of the room that is east
      * @param w represents the index of the room that is west
      */
-    public Room(String name, String description, int n, int s, int e, int w){
+    public Room(String name, String description, int n, int e, int s, int w, boolean locked){
         this.name=name;
         this.description=description;
         this.n=n;
         this.s=s;
         this.e=e;
         this.w=w;
+        this.locked=locked;
 
     }
 
@@ -76,6 +78,11 @@ public class Room {
     public String getDescription(){
         return this.description;
     }
+
+    public boolean islocked(){
+        return this.locked;
+    }
+
 
 
     public static void main(String[] args) {
