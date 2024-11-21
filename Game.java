@@ -18,7 +18,6 @@ public class Game {
         map.add(new Room("lawn", "lawn", -1, 0, 2, -1, false)); //Room 3
     }   
 
-
     public static void main(String[] args) {
         
     }
