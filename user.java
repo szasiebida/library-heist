@@ -18,7 +18,7 @@ public class User {
 
     public String useitem() {
         //remove item from inventory
-        return this.inventory;
+        return this.initialInventory;
     }
                 // HEY WHATS THE DIFF BETWEEN THESE TWO
     public String grabitem() {
