@@ -18,12 +18,7 @@ public class User {
 
     public String useitem() {
         //remove item from inventory
-<<<<<<< HEAD
         return this.inventory;
-=======
-        //return inventory
-        return "hello";
->>>>>>> 0890d3ea993493c6a3346cb56227b6f053ddfe0e
     }
                 // HEY WHATS THE DIFF BETWEEN THESE TWO
     public String grabitem() {
