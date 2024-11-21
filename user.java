@@ -11,7 +11,7 @@ public class User {
     public String move(int x, int y){
         // xlocation = xlocation + x;
         // ylocation = yloaction + y;
-        return location;
+        return this.location;
     }
 
     public String useitem() {
