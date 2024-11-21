@@ -14,11 +14,15 @@ public class People {
         this.dialogue = dialogue;
     }
 
-    private void Speak() {
+    private void speak() {
         System.out.println(dialogue);
     }
 
     private void giveItem() {
         System.out.println(items + "aquired.");
+    }
+
+    public static void main(String[] args) {
+        
     }
 }

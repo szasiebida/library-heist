@@ -6,7 +6,6 @@ public class Game {
     
     ArrayList<Room> map;
 
-
     public Game(){
         this.map=new ArrayList<Room>();
         map.add(new Room("Neilson", "Neilson Library", -1, -1, 1, 3, true)); // Room 0

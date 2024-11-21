@@ -16,7 +16,7 @@ public class User {
 
     public String useitem() {
         //remove item from inventory
-        //return inventory
+        return this.inventory;
     }
                 // HEY WHATS THE DIFF BETWEEN THESE TWO
     public String grabitem() {
@@ -24,5 +24,7 @@ public class User {
         return this.inventory;
     }
 
-    
+    public static void main(String[] args) {
+        
+    }
 }
