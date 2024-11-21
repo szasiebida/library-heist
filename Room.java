@@ -79,6 +79,10 @@ public class Room {
         return this.description;
     }
 
+    /**
+     * getter for if the room is locked 
+     * @return if the room is locked
+     */
     public boolean islocked(){
         return this.locked;
     }
