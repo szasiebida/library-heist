@@ -3,15 +3,16 @@ import java.util.ArrayList; // import the ArrayList class
 public class People {
 
     private String name;
-    private String location;
     private String items;
     private String dialogue;
+    int location;
 
-    public People(String name, String location, String items, String dialogue) {
+
+    public People(String name, String items, String dialogue, int location) {
         this.name = name;
-        this.location = location;
         this.items = items;
         this.dialogue = dialogue;
+        this.location= location;
     }
 
     private void speak() {
@@ -21,6 +22,7 @@ public class People {
     private void giveItem() {
         System.out.println(items + "aquired.");
     }
+
 
     public static void main(String[] args) {
         
