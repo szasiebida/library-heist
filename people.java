@@ -1,4 +1,5 @@
 import java.util.ArrayList; // import the ArrayList class
+//just have text ?? dont need a class 
 
 public class People {
 

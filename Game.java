@@ -18,7 +18,8 @@ public class Game {
         map.add(new Room("Bass", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
         map.add(new Room("Burton", "Burton Hall", 3, 1, -1, -1, false)); //Room 2
         map.add(new Room("lawn", "lawn", -1, 0, 2, -1, false)); //Room 3
-        this.myUser= new User("void",1); //player with no inventory starting in room 1, bass
+        this.myUser= new User(1); //player with no inventory starting in room 1, bass
+        Item key= new Item("key", "unlocks Neilson");
     }    
 
     public void play(){
