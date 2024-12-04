@@ -7,6 +7,17 @@ public class Game {
     
     ArrayList<Room> map;
     User myUser;
+    public int location;
+    public String currentname;
+    public int ncoordinate;
+    public int scoordinate;
+    public int ecoordinate;
+    public int wcoordinate;
+    Room currentlocation;
+    public String tothenorth;
+    public String tothesouth;
+    public String totheeast;
+    public String tothewest;
 
     /**
      * constrcutor for the game 
@@ -24,6 +35,39 @@ public class Game {
 
     public void play(){
         this.myUser.move("n",this.map);
+    }
+
+    public void script(int location) {
+        currentlocation = map.get(location);
+        currentname = currentlocation.getName();
+        ncoordinate = currentlocation.getN();
+        if (ncoordinate == -1) {
+            tothenorth = "nothing";
+        } else {
+            tothenorth = map.get(ncoordinate).getName();
+        }
+        scoordinate = currentlocation.getS();
+        if (scoordinate == -1) {
+            tothesouth = "nothing";
+        } else {
+            tothesouth = map.get(scoordinate).getName();
+        }
+        ecoordinate = currentlocation.getE();
+        if (ecoordinate == -1) {
+            totheeast = "nothing";
+        } else {
+            totheeast = map.get(ecoordinate).getName();
+        }
+        wcoordinate = currentlocation.getW();
+        if (ncoordinate == -1) {
+            tothewest = "nothing";
+        } else {
+            tothewest = map.get(wcoordinate).getName();
+        }
+        System.out.println("Welcome to " + currentname + ". To the North is " + tothenorth + ". To the East is " + totheeast + ". To the South is " + tothesouth + ". To the West is " + tothewest);
+        // if (myUser.location == 1) {
+        //     System.out.println("Welcome to Bass Hall. To the North is ");
+        // }
     }
 
     public static void main(String[] args) {
@@ -44,7 +88,7 @@ public class Game {
         System.out.println("Welcome to Smith College, home of the rare books collection. You have been hired to steal the entire collection before dawn. If completed, you will be paid $1,000,000.00 in cash. If not, you will face the consequences of getting caught. Good luck.");
     
         //INSTRUCITONS
-        System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the South is nothing. To the East is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
+        System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
     
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
@@ -53,6 +97,7 @@ public class Game {
 
             if (userResponse.equals("n")) {
                 myGame.myUser.move("n", myGame.map);
+                myGame.script(myGame.myUser.location);
             } else if (userResponse.equals("s")) {
                 myGame.myUser.move("s", myGame.map);
             } else if (userResponse.equals("e")) {
