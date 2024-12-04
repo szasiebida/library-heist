@@ -44,6 +44,28 @@ public class User {
         return map.get(location);
     }
 
+    public void useItem(Item myitem){
+        System.out.println("the" + myitem.getName()+ "has"+ myitem.getFunction());
+    }
+
+    //returns false if there is not enough space in the inventory to grab the item 
+    //i imagine there could be a print statement related to the boolean value outputed so if false then "you can't add that"
+    public boolean grabItem(Item myItem){
+        if (this.inventory.size()<10){
+            inventory.add(myItem);
+            return true;
+        } else 
+            return false;
+    }
+
+    public boolean dropItem(Item myItem){
+        if (this.inventory.contains(myItem)){
+            this.inventory.remove(myItem);
+            return true;
+        } else 
+            return false;
+    }
+        
 
     public static void main(String[] args) {
         
