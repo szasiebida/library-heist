@@ -1,13 +1,12 @@
 import java.util.ArrayList; // import the ArrayList class
 public class User {
 
-    // private String initialInventory; //WHAT IF WE TAKE IN A STRING AND THEN SEGMENT IT AND THEN WE CAN MAKE IT AN ARRAYLIST
+    ArrayList<Item> inventory;
     int location; //index of the arraylist that corresponds to the room 
 
-    public User( int location) {
-        // this.initialInventory = initialInventory;
+    public User( int location ) {
+        this.inventory=new ArrayList<Item>();
         this.location=location;
-        // append the existing inventory to an arraylist and then the arraylist becomes the offical inventory
     }
 
     public void move(String command,ArrayList<Room> map){
