@@ -28,6 +28,7 @@ public class Game {
         map.add(new Room("Bass Hall", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
         map.add(new Room("Burton Hall", " Hall", 3, 1, -1, -1, false)); //Room 2
         map.add(new Room("Lawn", "There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag.", -1, 0, 2, -1, false)); //Room 3
+        //map.add(new Room("Paradise Pond", "Whoops, you fell in. Goodbye.", 0, 0, 0, 0, false));
         this.myUser= new User(1); //player with no inventory starting in room 1, bass
         Item key= new Item("key", "unlocks Neilson");
     }    
@@ -63,7 +64,7 @@ public class Game {
         } else {
             tothewest = map.get(wcoordinate).getName();
         }
-        System.out.println("Welcome to " + currentname + ". To the North is " + tothenorth + ". To the East is " + totheeast + ". To the South is " + tothesouth + ". To the West is " + tothewest);
+        System.out.println("Welcome to " + currentname + ". To the North is " + tothenorth + ". To the East is " + totheeast + ". To the South is " + tothesouth + ". To the West is " + tothewest + ".");
         //if (myUser.location == 
     }
 
@@ -97,10 +98,13 @@ public class Game {
                 myGame.script(myGame.myUser.location);
             } else if (userResponse.equals("s")) {
                 myGame.myUser.move("s", myGame.map);
+                myGame.script(myGame.myUser.location);
             } else if (userResponse.equals("e")) {
                 myGame.myUser.move("e", myGame.map);
+                myGame.script(myGame.myUser.location);
             } else if (userResponse.equals("w")) {
                 myGame.myUser.move("w", myGame.map);
+                myGame.script(myGame.myUser.location);
             } else if (userResponse.contains("use")) {
                 //calluseitem
             } else if (userResponse.contains("grab")||userResponse.contains("take")) {
