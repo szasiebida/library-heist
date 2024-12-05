@@ -65,9 +65,7 @@ public class Game {
             tothewest = map.get(wcoordinate).getName();
         }
         System.out.println("Welcome to " + currentname + ". To the North is " + tothenorth + ". To the East is " + totheeast + ". To the South is " + tothesouth + ". To the West is " + tothewest);
-        // if (myUser.location == 1) {
-        //     System.out.println("Welcome to Bass Hall. To the North is ");
-        // }
+        //if (myUser.location == 
     }
 
     public static void main(String[] args) {
