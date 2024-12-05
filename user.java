@@ -20,7 +20,7 @@ public class User {
             if (nextRoomIndex != -1 && ! map.get(location).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
             } else 
-                if(nextRoomIndex != -1){
+                if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
                 } else if(map.get(location).islocked()){
                     System.out.println("this room is locked!");
@@ -32,7 +32,7 @@ public class User {
             if (nextRoomIndex != -1 && ! map.get(location).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
             } else 
-                if(nextRoomIndex != -1){
+                if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
                 } else if(map.get(location).islocked()){
                     System.out.println("this room is locked!");
@@ -44,7 +44,7 @@ public class User {
             if (nextRoomIndex != -1 && ! map.get(location).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
             } else 
-                if(nextRoomIndex != -1){
+                if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
                 } else if(map.get(location).islocked()){
                     System.out.println("this room is locked!");
@@ -56,7 +56,7 @@ public class User {
             if (nextRoomIndex != -1 && ! map.get(location).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
             } else 
-                if(nextRoomIndex != -1){
+                if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
                 } else if(map.get(location).islocked()){
                     System.out.println("this room is locked!");
@@ -83,8 +83,13 @@ public class User {
         return map.get(location).getName();
     }
 
+    /**
+     * function that uses the item 
+     * @param myitem the item the user wants to use 
+     */
     public void useItem(Item myitem){
-        System.out.println("the" + myitem.getName()+ "has"+ myitem.getFunction());
+        System.out.println(" the " + myitem.getName()+ " can "+ myitem.getFunction());
+        dropItem(myitem);
     }
 
     //returns false if there is not enough space in the inventory to grab the item 
@@ -126,13 +131,27 @@ public class User {
         } else {
             System.out.println("Your inventory contains:");
             for (Item item : inventory) {
-                System.out.println("- " + item.getName() + "which can " + item.getFunction());
+                System.out.println("- " + item.getName() + " which can " + item.getFunction());
             }
         }
     }
         
 
     public static void main(String[] args) {
-        
+        User myUser= new User(1);
+        Item key= new Item("key", "open neilson");
+        ArrayList<Room> map=new ArrayList<Room>();
+        map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, true)); // Room 0
+        map.add(new Room("Bass Hall", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
+        map.add(new Room("Burton Hall", " Hall", 3, 1, -1, -1, false)); //Room 2
+        map.add(new Room("Lawn", "There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag.", -1, 0, 2, -1, false)); //Room 3
+        myUser.grabItem(key);
+        myUser.printInventory();
+        myUser.useItem(key);
+        myUser.printInventory();
+        System.out.println(myUser.location);
+        myUser.move("s", map);
+        System.out.println(myUser.location);
+
     }
 }
