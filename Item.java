@@ -16,7 +16,13 @@ public class Item {
         return this.function;
     }
 
+    public void inspectItem(){
+        System.out.println(this.getName()+" can be used to "+this.getFunction());
+    }
+
     public static void main(String[] args) {
         
+        Item key= new Item("key", "unlock neilson");
+        key.inspectItem();
     }
 }
