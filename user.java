@@ -22,7 +22,7 @@ public class User {
             } else 
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
-                } else if(map.get(location).islocked()){
+                } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
         }
@@ -34,7 +34,7 @@ public class User {
             } else 
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
-                } else if(map.get(location).islocked()){
+                } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
         }
@@ -46,7 +46,7 @@ public class User {
             } else 
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
-                } else if(map.get(location).islocked()){
+                } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
         }
@@ -58,7 +58,7 @@ public class User {
             } else 
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
-                } else if(map.get(location).islocked()){
+                } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
         }
@@ -150,7 +150,7 @@ public class User {
         myUser.useItem(key);
         myUser.printInventory();
         System.out.println(myUser.getRoomName(map));
-        myUser.move("w", map);
+        myUser.move("n", map);
         System.out.println(myUser.getRoomName(map));
 
     }
