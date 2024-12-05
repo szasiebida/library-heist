@@ -22,7 +22,7 @@ public class User {
             } else 
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
-                } else if(map.get(location).islocked()){
+                } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
         }
@@ -34,7 +34,7 @@ public class User {
             } else 
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
-                } else if(map.get(location).islocked()){
+                } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
         }
@@ -46,7 +46,7 @@ public class User {
             } else 
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
-                } else if(map.get(location).islocked()){
+                } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
         }
@@ -58,7 +58,7 @@ public class User {
             } else 
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
-                } else if(map.get(location).islocked()){
+                } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
         }
@@ -138,7 +138,7 @@ public class User {
         
 
     public static void main(String[] args) {
-        User myUser= new User(0);
+        User myUser= new User(1);
         Item key= new Item("key", "open neilson");
         ArrayList<Room> map=new ArrayList<Room>();
         map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, true)); // Room 0
@@ -149,9 +149,9 @@ public class User {
         myUser.printInventory();
         myUser.useItem(key);
         myUser.printInventory();
-        System.out.println(myUser.location);
-        myUser.move("s", map);
-        System.out.println(myUser.location);
+        System.out.println(myUser.getRoomName(map));
+        myUser.move("n", map);
+        System.out.println(myUser.getRoomName(map));
 
     }
 }
