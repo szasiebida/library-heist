@@ -4,7 +4,7 @@ public class User {
     ArrayList<Item> inventory;
     int location;   //index of the arraylist that corresponds to the room object 
 
-    public User( int location ) {
+    public User(int location) {
         this.inventory=new ArrayList<Item>();
         this.location=location;
     }
@@ -17,7 +17,7 @@ public class User {
     public void move(String command,ArrayList<Room> map){
         if (command.equals("n")) {
             int nextRoomIndex = (map.get((location))).getN(); //geting the next room index
-            if (nextRoomIndex != -1 && ! map.get(location).islocked()) {
+            if (nextRoomIndex != -1 && !map.get(nextRoomIndex).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
             } else 
                 if(nextRoomIndex == -1){
@@ -29,7 +29,7 @@ public class User {
 
         if (command.equals("s")) {
             int nextRoomIndex = (map.get((location))).getS(); //geting the next room index
-            if (nextRoomIndex != -1 && ! map.get(location).islocked()) {
+            if (nextRoomIndex != -1 && !map.get(nextRoomIndex).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
             } else 
                 if(nextRoomIndex == -1){
@@ -41,7 +41,7 @@ public class User {
 
         if (command.equals("e")) {
             int nextRoomIndex = (map.get((location))).getE(); //geting the next room index
-            if (nextRoomIndex != -1 && ! map.get(location).islocked()) {
+            if (nextRoomIndex != -1 && !map.get(nextRoomIndex).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
             } else 
                 if(nextRoomIndex == -1){
@@ -53,7 +53,7 @@ public class User {
 
         if (command.equals("w")) {
             int nextRoomIndex = (map.get((location))).getW(); //geting the next room index
-            if (nextRoomIndex != -1 && ! map.get(location).islocked()) {
+            if (nextRoomIndex != -1 && ! map.get(nextRoomIndex).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
             } else 
                 if(nextRoomIndex == -1){
@@ -123,7 +123,7 @@ public class User {
     }
 
     /**
-     * function that prints out the list of items contained in the inventory 
+     * function that prints out the list of items contained in the inventory along with their functions 
      */
     public void printInventory() {
         if (inventory.isEmpty()) {
@@ -138,7 +138,7 @@ public class User {
         
 
     public static void main(String[] args) {
-        User myUser= new User(1);
+        User myUser= new User(0);
         Item key= new Item("key", "open neilson");
         ArrayList<Room> map=new ArrayList<Room>();
         map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, true)); // Room 0

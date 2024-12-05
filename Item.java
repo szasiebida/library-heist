@@ -8,6 +8,10 @@ public class Item {
         this.function=function;
     }
 
+    /**
+     * 
+     * @return the name of the item
+     */
     public String getName(){
         return this.name;
     }
