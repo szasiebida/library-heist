@@ -25,10 +25,10 @@ public class Game {
      */
     public Game(){
         this.map=new ArrayList<Room>();
-        map.add(new Room("Neilson", "Neilson Library", -1, -1, 1, 3, true)); // Room 0
-        map.add(new Room("Bass", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
-        map.add(new Room("Burton", "Burton Hall", 3, 1, -1, -1, false)); //Room 2
-        map.add(new Room("lawn", "lawn", -1, 0, 2, -1, false)); //Room 3
+        map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, true)); // Room 0
+        map.add(new Room("Bass Hall", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
+        map.add(new Room("Burton Hall", " Hall", 3, 1, -1, -1, false)); //Room 2
+        map.add(new Room("Lawn", "There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag.", -1, 0, 2, -1, false)); //Room 3
         this.myUser= new User(1); //player with no inventory starting in room 1, bass
         Item key= new Item("key", "unlocks Neilson");
     }    
