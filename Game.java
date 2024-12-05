@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Ive only just started this class because all i know is that it needs to have a map of all the rooms!
 
 public class Game {
     
@@ -13,7 +12,7 @@ public class Game {
     public int scoordinate;
     public int ecoordinate;
     public int wcoordinate;
-    Room currentlocation;
+    Room currentlocation; //to get currentlocation myUser.location() --> room object myUser.getname()--> name of the room
     public String tothenorth;
     public String tothesouth;
     public String totheeast;
