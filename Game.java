@@ -86,7 +86,7 @@ public class Game {
         System.out.println("Welcome to Smith College, home of the rare books collection. You have been hired to steal the entire collection before dawn. If completed, you will be paid $1,000,000.00 in cash. If not, you will face the consequences of getting caught. Good luck.");
     
         //INSTRUCITONS
-        System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
+        //System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
     
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
