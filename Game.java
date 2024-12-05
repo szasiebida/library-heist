@@ -97,7 +97,9 @@ public class Game {
                 myGame.myUser.move("n", myGame.map);
                 myGame.script(myGame.myUser.location);
             } else if (userResponse.equals("s")) {
+                System.out.println(myGame.myUser.location);
                 myGame.myUser.move("s", myGame.map);
+                System.out.println(myGame.myUser.location);
                 myGame.script(myGame.myUser.location);
             } else if (userResponse.equals("e")) {
                 myGame.myUser.move("e", myGame.map);
