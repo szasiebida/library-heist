@@ -59,7 +59,7 @@ public class Game {
             totheeast = map.get(ecoordinate).getName();
         }
         wcoordinate = currentlocation.getW();
-        if (ncoordinate == -1) {
+        if (wcoordinate == -1) {
             tothewest = "nothing";
         } else {
             tothewest = map.get(wcoordinate).getName();
@@ -86,7 +86,7 @@ public class Game {
         System.out.println("Welcome to Smith College, home of the rare books collection. You have been hired to steal the entire collection before dawn. If completed, you will be paid $1,000,000.00 in cash. If not, you will face the consequences of getting caught. Good luck.");
     
         //INSTRUCITONS
-        //System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
+        System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
     
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
@@ -105,7 +105,9 @@ public class Game {
                 myGame.myUser.move("e", myGame.map);
                 myGame.script(myGame.myUser.location);
             } else if (userResponse.equals("w")) {
+                System.out.println(myGame.myUser.location);
                 myGame.myUser.move("w", myGame.map);
+                System.out.println(myGame.myUser.location);
                 myGame.script(myGame.myUser.location);
             } else if (userResponse.contains("use")) {
                 //calluseitem
