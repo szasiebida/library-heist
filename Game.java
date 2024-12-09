@@ -17,6 +17,7 @@ public class Game {
     public String tothesouth;
     public String totheeast;
     public String tothewest;
+    public boolean response;
     public int bassscripttimeline;
     public boolean goupinbuilding;
     public boolean exit;
@@ -112,7 +113,7 @@ public class Game {
                 System.out.println("Upon entrance to Bass Hall, you encounter students studying quietly in the foyer area and a classroom you peek your head into. Do you want to further explore the first floor (1) or go to the second floor (2)?");
             }
             else if (bassscripttimeline == 1) {
-                if (goupinbuilding == true) {
+                if (response == true) {
                     bassscripttimeline = 2;
                     System.out.println("There are groups of students in all the calssrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (y/n)");
                 } else {
@@ -120,7 +121,7 @@ public class Game {
                     System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate? (y/n)");
                 }
             } else if (bassscripttimeline == 2) {
-                if (exit == true) {
+                if (response == true) {
                     bassscripttimeline = 3;
                     System.out.println("You follow all the students to Burton Hall.");
                     myUser.move("w", map);
@@ -230,7 +231,7 @@ public class Game {
                 myGame.myUser.move("w", myGame.map);
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("1")) {
-                myGame.goupinbuilding = false;
+                myGame.response = false;
                 myGame.useflashlight=true;
                 myGame.elevator=true;
                 myGame.buildingscripts(myGame.myUser.location);
@@ -238,10 +239,10 @@ public class Game {
                 myGame.goupinbuilding = true;
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("yes")) {
-                myGame.exit = true;
+                myGame.response = true;
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("no")) {
-                myGame.exit = false;
+                myGame.response = false;
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.contains("use")) {
                 //calluseitem
