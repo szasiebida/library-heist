@@ -21,6 +21,11 @@ public class Game {
     public boolean goupinbuilding;
     public boolean exit;
 
+    public int neilsonscripttimeline;
+    public boolean useflashlight; 
+    public boolean elevator; 
+
+
     public boolean stillPlaying; //figure out how to incorporate this with the loop logic 
 
     /**
@@ -37,10 +42,12 @@ public class Game {
         //map.add(new Room("Paradise Pond", "Whoops, you fell in. Goodbye.", 0, 0, 0, 0, false));
         this.myUser= new User(1); //player with no inventory starting in room 1, bass
         Item key= new Item("key", "unlocks Neilson");
+        Item duffel= new Item ("duffel","for bookks");
+        neilsonscripttimeline = 0;
     }    
 
     public void play(){
-        this.myUser.move("n",this.map);
+        //this.myUser.move("n",this.map);
     }
 
     public void script(int location) {
@@ -96,7 +103,9 @@ public class Game {
         }
     }
 
+    //i dont thing building script needs to take in locations 
     public void buildingscripts(int location) {
+        //use yes no instead of y/n
         if (myUser.location == 1) {
             if (bassscripttimeline == 0) {
                 bassscripttimeline = 1;
@@ -125,46 +134,62 @@ public class Game {
             }
         }
         else if(myUser.location == 0){
-            System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
-            if  (user input == 1 && myUser.inventory.contains("flashlight")){
-                System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs");
-                    if (user input == 1){
-                        System.out.println("In the elevator you have met a ghost-");
-                        System.out.println("Hello there! I didn't know they let humans in after dark- would you like to take a rest with me these books are making me awfully sleepy (1) or no (2)");
-                            if(userinput == 1){
-                                System.out.println("you died!");
-                                myUser.alive=false;}
-                            else if(user input==2){
-                                System.out.println("The ghost lets out a sob and mysteriously floats away");
-                                System.out.println("ding! You have made it to the third floor!!");
-                                System.out.println("The doors open- to your right is a closed room and to your left is the classics room where do you want to go? closed room(1) or classics room(2)");
-                                    if(user input==1){
-                                        System.out.println("Good choice! you found the classics room!");
-                                        System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
-                                            if(user input==1 && myUser.inventory.contains("duffel")){
-                                                System.out.println("you win!");
-                                                //end loop
-                                            } else if (! myUser.inventory.contains("duffel")){
-                                                System.out.println("you need a duffel!");
-                                                System.out.println("well put you back at the begginngin try again");
-                                            } else {
-                                                System.out.println("you have a strong moral compass");
-                                            }
-                        
+            if (neilsonscripttimeline==0){
+                System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
+                neilsonscripttimeline=1;
+            } else if (neilsonscripttimeline==1){
+                if (useflashlight){
+                    neilsonscripttimeline=2;
+                    System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
+                } else {
+                    System.out.println("it's dark and the ghosts got you");
+                    myUser.alive=false;
+                    //figure out how to make this end the game
+                }
+            } else if (neilsonscripttimeline==2){
+                if (elevator){
+                   System.out.println("In the elevator you have met a ghost-");
+                   System.out.println("Hello there! I didn't know they let humans in after dark- would you like to take a rest with me these books are making me awfully sleepy (1) or no (2)");
+                   neilsonscripttimeline=3;
+                } else {
+                    System.out.println("the stairs have taken you back to the lobby? that's weird");
+                    neilsonscripttimeline=0;
+                }
+            } else if (neilsonscripttimeline==3){
+                if(elevator){
+                    System.out.println("yikes! the ghost convinved you to fall asleep and campo caught you in the morning!");
+                    myUser.alive=false;
+                } else {
+                    neilsonscripttimeline=4;
+                    System.out.println("The ghost lets out a sob and mysteriously floats away");
+                    System.out.println("ding! You have made it to the third floor!!");
+                    System.out.println("The doors open- to your right is a closed room and to your left is the classics room do you want to go in? yes/no");
+                }
+            } else if (neilsonscripttimeline==4){
+                if (exit){
+                    System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
+                    neilsonscripttimeline=5;
+                } else {
+                    System.out.println("then why are you playing?!!");
+                    myUser.alive=false;
+                }
 
+            }else if (neilsonscripttimeline==5){
+                if (elevator){
+                    System.out.println("congrats you win 100000000000000 now get out of here!");
+                } else {
+                    System.out.println("you have a great moral compass but you also lost sorry :()");
+                    myUser.alive=false;
+                }
 
-                                    }else if(user input==2){
-                                        System.out.println("The classics room looks awfully creepy at night do you want to go back the way you came(1) or stay here(2)");
-                                    }
-                            }
-
-                            }
-                    }
-            } else{
-                System.out.println("you died!");
-                myUser.alive=false; 
             }
         }
+        }
+                
+        //myUser.inventory.contains(duffel) when script=5
+        //&& myUser.inventory.contains() for script =2
+            
+
     
 
     public static void main(String[] args) {
@@ -206,14 +231,16 @@ public class Game {
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("1")) {
                 myGame.goupinbuilding = false;
+                myGame.useflashlight=true;
+                myGame.elevator=true;
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("2")) {
                 myGame.goupinbuilding = true;
                 myGame.buildingscripts(myGame.myUser.location);
-            } else if (userResponse.equals("y")) {
+            } else if (userResponse.equals("yes")) {
                 myGame.exit = true;
                 myGame.buildingscripts(myGame.myUser.location);
-            } else if (userResponse.equals("n")) {
+            } else if (userResponse.equals("no")) {
                 myGame.exit = false;
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.contains("use")) {
