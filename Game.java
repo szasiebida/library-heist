@@ -21,11 +21,14 @@ public class Game {
     public boolean goupinbuilding;
     public boolean exit;
 
+    public boolean stillPlaying;
+
     /**
      * constrcutor for the game 
      * initializes the map 
      */
     public Game(){
+        this.stillPlaying=true;
         this.map=new ArrayList<Room>();
         map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, true)); // Room 0
         map.add(new Room("Bass Hall", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
@@ -118,7 +121,48 @@ public class Game {
                 }
             } else if (bassscripttimeline == 3) {
                 script(myUser.location);
-                System.out.println("Nothing has changed in Bass Hall. It is still quiet and students are still studying. Where do you want to go next?")
+                System.out.println("Nothing has changed in Bass Hall. It is still quiet and students are still studying. Where do you want to go next?");
+            }
+        }
+        else if(myUser.location == 0){
+            System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
+            if  (user input == 1 && myUser.inventory.contains("flashlight")){
+                System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs");
+                    if (user input == 1){
+                        System.out.println("In the elevator you have met a ghost-");
+                        System.out.println("Hello there! I didn't know they let humans in after dark- would you like to take a rest with me these books are making me awfully sleepy (1) or no (2)");
+                            if(userinput == 1){
+                                System.out.println("you died!");
+                                myUser.alive=false;
+                            else if(user input==2){
+                                System.out.println("The ghost lets out a sob and mysteriously floats away");
+                                System.out.println("ding! You have made it to the third floor!!");
+                                System.out.println("The doors open- to your right is a closed room and to your left is the classics room where do you want to go? closed room(1) or classics room(2)");
+                                    if(user input==1){
+                                        System.out.println("Good choice! you found the classics room!");
+                                        System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
+                                            if(user input==1 && myUser.inventory.contains("duffel")){
+                                                System.out.println("you win!");
+                                                //end loop
+                                            } else if (! myUser.inventory.contains("duffel")){
+                                                System.out.println("you need a duffel!");
+                                                System.out.println("well put you back at the begginngin try again");
+                                            } else {
+                                                System.out.println("you have a strong moral compass");
+                                            }
+                        
+
+
+                                    }else if(user input==2){
+                                        System.out.println("The classics room looks awfully creepy at night do you want to go back the way you came(1) or stay here(2)");
+                                    }
+                            }
+
+                            }
+                    }
+            } else{
+                System.out.println("you died!");
+                myUser.alive=false; 
             }
         }
     }
@@ -194,6 +238,8 @@ public class Game {
         // }
 
    // }
+
+   //somewhere need to have the line if myUser.alive=false --> end game loop
     }
 }
 

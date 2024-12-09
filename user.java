@@ -3,10 +3,12 @@ public class User {
 
     ArrayList<Item> inventory;
     int location;   //index of the arraylist that corresponds to the room object 
+    boolean alive;
 
     public User(int location) {
         this.inventory=new ArrayList<Item>();
         this.location=location;
+        this.alive=true;
     }
 
     /**
