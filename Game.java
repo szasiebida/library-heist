@@ -133,7 +133,7 @@ public class Game {
                         System.out.println("Hello there! I didn't know they let humans in after dark- would you like to take a rest with me these books are making me awfully sleepy (1) or no (2)");
                             if(userinput == 1){
                                 System.out.println("you died!");
-                                myUser.alive=false;
+                                myUser.alive=false;}
                             else if(user input==2){
                                 System.out.println("The ghost lets out a sob and mysteriously floats away");
                                 System.out.println("ding! You have made it to the third floor!!");
@@ -165,7 +165,7 @@ public class Game {
                 myUser.alive=false; 
             }
         }
-    }
+    
 
     public static void main(String[] args) {
         Game myGame= new Game();
