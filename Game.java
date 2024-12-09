@@ -139,7 +139,7 @@ public class Game {
                 System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
                 neilsonscripttimeline=1;
             } else if (neilsonscripttimeline==1){
-                if (useflashlight){
+                if (elevator){
                     neilsonscripttimeline=2;
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
                 } else {
@@ -167,7 +167,7 @@ public class Game {
                     System.out.println("The doors open- to your right is a closed room and to your left is the classics room do you want to go in? yes/no");
                 }
             } else if (neilsonscripttimeline==4){
-                if (exit){
+                if (response){
                     System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
                     neilsonscripttimeline=5;
                 } else {
@@ -236,7 +236,8 @@ public class Game {
                 myGame.elevator=true;
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("2")) {
-                myGame.goupinbuilding = true;
+                myGame.response = true;
+                myGame.goupinbuilding = true; //delete
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("yes")) {
                 myGame.response = true;
