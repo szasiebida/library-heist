@@ -25,7 +25,7 @@ public class Item {
     }
 
     /**
-     * function that prints both the name and the function of the item 
+     * function that prints both the name and the function of the item
      */
     public void inspectItem(){
         System.out.println(this.getName()+" can be used to "+this.getFunction());
