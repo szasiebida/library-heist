@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 //bug when given a prompt cannot enter a direction
 //probably should not increment the storyline until the user responds with one or 2  
-
-
 //everytime you move to a new room should call the script that tells you where you are and whats around you 
+
+
 public class Game {
     
     ArrayList<Room> map;
