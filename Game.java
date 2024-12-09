@@ -21,7 +21,7 @@ public class Game {
     public boolean goupinbuilding;
     public boolean exit;
 
-    public boolean stillPlaying;
+    public boolean stillPlaying; //figure out how to incorporate this with the loop logic 
 
     /**
      * constrcutor for the game 
