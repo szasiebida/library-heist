@@ -80,7 +80,7 @@ public class Game {
     }
 
     //i dont thing building script needs to take in locations 
-    public void buildingscripts(int location) {
+    public void buildingscripts() {
         //use yes no instead of y/n
         if (myUser.location == 1) {
             if (bassscripttimeline == 0) {
@@ -101,7 +101,7 @@ public class Game {
                     System.out.println("You follow all the students to Burton Hall.");
                     myUser.move("w", map);
                     script(myUser.location);
-                    buildingscripts(myUser.location);
+                    buildingscripts();
                 } else {
                     System.out.println("You get trampled by the students going to investigate campo's appearance");
                     myUser.alive=false;
@@ -173,7 +173,7 @@ public class Game {
                     System.out.println("You give campo the keys and they think that you were trying to steal them. They detain you for further questioning. You have failed this quest.");
                     myUser.alive=false;
                 } 
-            } else if (burtonscripttimeline > 2) {
+            } else if (burtonscripttimeline == 2) {
                 System.out.println("The mess has been cleaned up. Campo is still here looking for their missing keys. They know you've taken them, and you are detained. You have failed this quest.");
                 myUser.alive=false;
                 }
@@ -232,7 +232,7 @@ public class Game {
     
         //INSTRUCITONS
         System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
-        myGame.buildingscripts(1);
+        myGame.buildingscripts();
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
 
@@ -240,31 +240,31 @@ public class Game {
 
             if (userResponse.equals("n")) {
                 myGame.myUser.move("n", myGame.map);
-                myGame.buildingscripts(myGame.myUser.location);
+                myGame.buildingscripts();
             } else if (userResponse.equals("s")) {
                 myGame.myUser.move("s", myGame.map);
-                myGame.buildingscripts(myGame.myUser.location);
+                myGame.buildingscripts();
             } else if (userResponse.equals("e")) {
                 myGame.myUser.move("e", myGame.map);
-                myGame.buildingscripts(myGame.myUser.location);
+                myGame.buildingscripts();
             } else if (userResponse.equals("w")) {
                 myGame.myUser.move("w", myGame.map);
-                myGame.buildingscripts(myGame.myUser.location);
+                myGame.buildingscripts();
             } else if (userResponse.equals("1")) {
                 myGame.response = false;
                 // myGame.useflashlight=true;
                 // myGame.elevator=true;
-                myGame.buildingscripts(myGame.myUser.location);
+                myGame.buildingscripts();
             } else if (userResponse.equals("2")) {
                 myGame.response = true;
                 // myGame.goupinbuilding = true; //delete
-                myGame.buildingscripts(myGame.myUser.location);
+                myGame.buildingscripts();
             } else if (userResponse.equals("yes")) {
                 myGame.response = true;
-                myGame.buildingscripts(myGame.myUser.location);
+                myGame.buildingscripts();
             } else if (userResponse.equals("no")) {
                 myGame.response = false;
-                myGame.buildingscripts(myGame.myUser.location);
+                myGame.buildingscripts();
             } else if (userResponse.contains("use")) {
                 //calluseitem
             } else if (userResponse.contains("grab")||userResponse.contains("take")) {
