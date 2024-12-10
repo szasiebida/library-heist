@@ -26,6 +26,9 @@ public class Game {
     public int neilsonscripttimeline;
     public int burtonscripttimeline;
     public int lawnscripttimeline;
+    Item duffel;
+    Item key;
+    Item flashlight;
 
 
     /**
@@ -40,8 +43,9 @@ public class Game {
         map.add(new Room("Lawn", "Burton Lawn", -1, 0, 2, -1, false)); //Room 3
         //map.add(new Room("Paradise Pond", "Whoops, you fell in. Goodbye.", 0, 0, 0, 0, false));
         this.myUser= new User(1); //player with no inventory starting in room 1, bass
-        Item key= new Item("key", "unlocks Neilson");
-        Item duffel= new Item ("duffel","for bookks");
+        this.key= new Item("key", "unlocks Neilson");
+        this.flashlight= new Item("flashlight","make things bright");
+        this.duffel= new Item ("duffel","for bookks");
         neilsonscripttimeline = 0;
     }    
 
@@ -117,7 +121,7 @@ public class Game {
                 System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
                 neilsonscripttimeline=1;
             } else if (neilsonscripttimeline==1){
-                if (response==false){
+                if (response==false && myUser.inventory.contains(flashlight)){
                     neilsonscripttimeline=2;
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
                 } else {
@@ -153,7 +157,7 @@ public class Game {
                 }
 
             }else if (neilsonscripttimeline==5){
-                if (response==false){
+                if (response==false  && myUser.inventory.contains(duffel)){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
                 } else {
                     System.out.println("you have a great moral compass but you also lost sorry :()");
@@ -174,7 +178,7 @@ public class Game {
                     System.out.println("You give campo the keys and they think that you were trying to steal them. They detain you for further questioning. You have failed this quest.");
                     myUser.alive=false;
                 } 
-            } else if (burtonscripttimeline == 2) {
+            } else if (burtonscripttimeline == 2 && myUser.inventory.contains()) {
                 System.out.println("The mess has been cleaned up. Campo is still here looking for their missing keys. They know you've taken them, and you are detained. You have failed this quest.");
                 myUser.alive=false;
                 }
@@ -204,10 +208,7 @@ public class Game {
             }
         }
     }
-    
-                
-        //myUser.inventory.contains(duffel) when script=5
-        //&& myUser.inventory.contains() for script =2
+
             
 
     
