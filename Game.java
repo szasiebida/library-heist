@@ -170,7 +170,8 @@ public class Game {
                    neilsonscripttimeline=4;
                 } else {
                     System.out.println("the stairs have taken you back to the lobby? that's weird");
-                    neilsonscripttimeline = 2;
+                    neilsonscripttimeline = 3;
+                    System.out.println("You are in the front foyer of Neilson again, do you take the elevator (1) or the stairs (2)?");
                 }
             } else if (neilsonscripttimeline==4){
                 if (userinputt == "yes" || userinputt == "no") {
@@ -208,7 +209,7 @@ public class Game {
 
             }
         } else if (myUser.location == 2) {
-            if ((burtonscripttimeline > 0 && burtonscripttimeline < 2) && (userinputt == "s" || userinputt == "w")) {
+            if ((burtonscripttimeline > 0 && burtonscripttimeline <= 2) && (userinputt == "s" || userinputt == "w")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (burtonscripttimeline == 0) {
                 burtonscripttimeline = 1;
