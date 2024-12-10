@@ -178,12 +178,25 @@ public class Game {
                 myUser.alive=false;
                 }
         } else if (myUser.location == 3) {
-            if (lawnscripttimeline == 0) {
+            if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
                 lawnscripttimeline = 1;
+                script(myUser.location);
                 System.out.println("There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag. Do you want to investigate? (yes or no)");
             } else if (lawnscripttimeline == 1) {
                 if (response == true) {
-                    System.out.println(" congrats on getting that bag. where next?");
+                    lawnscripttimeline = 3;
+                    System.out.println("Its a duffel bag of some kind! It appears to have a flashlight in it. Do you want to take the bag and flashlight? (yes/no)");
+                } else {
+                    lawnscripttimeline = 2;
+                    System.out.println("No investigating today! Where to next?");
+                }
+            } else if (lawnscripttimeline == 3) {
+                if (response == true) {
+                    lawnscripttimeline = 5;
+                    System.out.println("Congrats, you have obtained a duffel bag and a flashlight! Where to next?");
+                } else {
+                    lawnscripttimeline = 4;
+                    System.out.println("Okay we will leave that there. Where to next?");
                 }
             }
         }
