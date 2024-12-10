@@ -189,6 +189,7 @@ public class Game {
             }else if (neilsonscripttimeline==6){
                 if (response==false  && myUser.inventory.contains(duffel)){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
+                    myUser.alive=false;
                 } else {
                     System.out.println("you have a great moral compass but you also lost sorry :()");
                     myUser.alive=false;
