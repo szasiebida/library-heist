@@ -183,7 +183,7 @@ public class Game {
                     System.out.println("You give campo the keys and they think that you were trying to steal them. They detain you for further questioning. You have failed this quest.");
                     myUser.alive=false;
                 } 
-            } else if (burtonscripttimeline == 2 && myUser.inventory.contains()) {
+            } else if (burtonscripttimeline == 2) {
                 System.out.println("The mess has been cleaned up. Campo is still here looking for their missing keys. They know you've taken them, and you are detained. You have failed this quest.");
                 myUser.alive=false;
                 }
