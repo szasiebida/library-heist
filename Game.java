@@ -90,7 +90,9 @@ public class Game {
     public void buildingscripts(String userinputt) {
         //use yes no instead of y/n
         if (myUser.location == 1) {
-            if (bassscripttimeline == 0) {
+            if (userinputt == "s" || userinputt == "e") {
+                System.out.println("Where do you want to go?");
+            } else if (bassscripttimeline == 0) {
                 bassscripttimeline = 1;
                 System.out.println("Upon entrance to Bass Hall, you encounter students studying quietly in the foyer area and a classroom you peek your head into. Do you want to further explore the first floor (1) or go to the second floor (2)?");
             }
@@ -130,7 +132,9 @@ public class Game {
             }
         }
         else if(myUser.location == 0){
-            if (neilsonscripttimeline==0){
+            if (userinputt == "n" || userinputt == "e") {
+                System.out.println("Where do you want to go?");
+            } else if (neilsonscripttimeline==0){
                 script(myUser.location);
                 System.out.println("Neilson is locked do you have a key to open the door? yes/no");
                 neilsonscripttimeline=1;
@@ -188,9 +192,11 @@ public class Game {
 
             }
         } else if (myUser.location == 2) {
-            if (burtonscripttimeline == 0) {
+            if (userinputt == "s" || userinputt == "w") {
+                System.out.println("Where do you want to go?");
+            } else if (burtonscripttimeline == 0) {
                 burtonscripttimeline = 1;
-                script(2);
+                //script(2);
                 System.out.println("Campo is inside of Burton. Upon investigation, you see that someone broke the fish and crab tank by the entrance. Water is everywhere and there is a lot of chaos. You notice that a campo officer has dropped their keys. Do you want to give them back (1) or keep them (2)?");
             } else if (burtonscripttimeline == 1) {
                 if (response == true) {
@@ -207,7 +213,9 @@ public class Game {
                 myUser.alive=false;
                 }
         } else if (myUser.location == 3) {
-            if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
+            if (userinputt == "n" || userinputt == "w") {
+                System.out.println("Where do you want to go?");
+            } else if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
                 lawnscripttimeline = 1;
                 // script(myUser.location);
                 System.out.println("There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag. Do you want to investigate? (yes or no)");
