@@ -5,6 +5,8 @@ import java.util.Scanner;
 //probably should not increment the storyline until the user responds with one or 2  
 //everytime you move to a new room should call the script that tells you where you are and whats around you 
 
+//paradise pond + time things
+//picture 
 
 public class Game {
     
