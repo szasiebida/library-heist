@@ -46,7 +46,6 @@ public class Game {
         this.key= new Item("key", "unlocks Neilson");
         this.flashlight= new Item("flashlight","make things bright");
         this.duffel= new Item ("duffel","for bookks");
-        neilsonscripttimeline = 0;
     }    
 
     public void play(){
