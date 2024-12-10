@@ -178,7 +178,7 @@ public class Game {
                 }
             } else if (neilsonscripttimeline==5){
                 if (response){
-                    System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
+                    System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave (2)");
                     neilsonscripttimeline=6;
                 } else {
                     System.out.println("then why are you playing?!!");
@@ -268,6 +268,11 @@ public class Game {
         String userResponse = "";
 
         //OPENEING
+        System.out.println("**********************");
+        System.out.println("NEILSON LIBRARY HEIST");
+        System.out.println("**********************");
+
+        System.out.println("\n");
         System.out.println("Welcome to Smith College, home of the rare books collection. You have been hired to steal the entire collection before dawn. If completed, you will be paid       $1,000,000.00 in cash. If not, you will face the consequences of getting caught. Good luck.");
     
         //INSTRUCITONS
