@@ -97,7 +97,7 @@ public class Game {
                         System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate? (yes/no)");
                     }
                 } else {
-                    bassscripttimeline = 3;
+                    bassscripttimeline = 0;
                     buildingscripts(userinputt);
                 } 
             } else if (bassscripttimeline == 2) {
