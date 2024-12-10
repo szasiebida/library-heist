@@ -84,7 +84,7 @@ public class Game {
     }
 
     //i dont thing building script needs to take in locations 
-    public void buildingscripts() {
+    public void buildingscripts(String userinputt) {
         //use yes no instead of y/n
         if (myUser.location == 1) {
             if (bassscripttimeline == 0) {
@@ -92,20 +92,25 @@ public class Game {
                 System.out.println("Upon entrance to Bass Hall, you encounter students studying quietly in the foyer area and a classroom you peek your head into. Do you want to further explore the first floor (1) or go to the second floor (2)?");
             }
             else if (bassscripttimeline == 1) {
-                if (response == true) {
-                    bassscripttimeline = 2;
-                    System.out.println("There are groups of students in all the calssrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (yes/no)");
+                if (userinputt == "1" || userinputt == "2") {
+                    if (response == true) {
+                        bassscripttimeline = 2;
+                        System.out.println("There are groups of students in all the calssrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (yes/no)");
+                    } else {
+                        bassscripttimeline = 2;
+                        System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate? (yes/no)");
+                    }
                 } else {
-                    bassscripttimeline = 2;
-                    System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate? (yes/no)");
-                }
+                    bassscripttimeline = 0;
+                    buildingscripts(userinputt);
+                } 
             } else if (bassscripttimeline == 2) {
                 if (response == true) {
                     bassscripttimeline = 3;
                     System.out.println("You follow all the students to Burton Hall.");
                     myUser.move("w", map);
                     script(myUser.location);
-                    buildingscripts();
+                    buildingscripts("yes");
                 } else {
                     System.out.println("You get trampled by the students going to investigate campo's appearance");
                     myUser.alive=false;
@@ -234,7 +239,7 @@ public class Game {
     
         //INSTRUCITONS
         System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
-        myGame.buildingscripts();
+        myGame.buildingscripts("yes");
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
 
@@ -242,31 +247,31 @@ public class Game {
 
             if (userResponse.equals("n")) {
                 myGame.myUser.move("n", myGame.map);
-                myGame.buildingscripts();
+                myGame.buildingscripts("n");
             } else if (userResponse.equals("s")) {
                 myGame.myUser.move("s", myGame.map);
-                myGame.buildingscripts();
+                myGame.buildingscripts("s");
             } else if (userResponse.equals("e")) {
                 myGame.myUser.move("e", myGame.map);
-                myGame.buildingscripts();
+                myGame.buildingscripts("e");
             } else if (userResponse.equals("w")) {
                 myGame.myUser.move("w", myGame.map);
-                myGame.buildingscripts();
+                myGame.buildingscripts("w");
             } else if (userResponse.equals("1")) {
                 myGame.response = false;
                 // myGame.useflashlight=true;
                 // myGame.elevator=true;
-                myGame.buildingscripts();
+                myGame.buildingscripts("1");
             } else if (userResponse.equals("2")) {
                 myGame.response = true;
                 // myGame.goupinbuilding = true; //delete
-                myGame.buildingscripts();
+                myGame.buildingscripts("2");
             } else if (userResponse.equals("yes")) {
                 myGame.response = true;
-                myGame.buildingscripts();
+                myGame.buildingscripts("yes");
             } else if (userResponse.equals("no")) {
                 myGame.response = false;
-                myGame.buildingscripts();
+                myGame.buildingscripts("no");
             } else if (userResponse.contains("use")) {
                 //calluseitem
             } else if (userResponse.contains("grab")||userResponse.contains("take")) {
