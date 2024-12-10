@@ -90,7 +90,7 @@ public class Game {
         //use yes no instead of y/n
         if (myUser.location == 1) {
             if ((bassscripttimeline == 1 || bassscripttimeline == 2) && (userinputt == "s" || userinputt == "e")) {
-                System.out.println("Where do you want to go?");
+                System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (bassscripttimeline == 0) {
                 bassscripttimeline = 1;
                 System.out.println("Upon entrance to Bass Hall, you encounter students studying quietly in the foyer area and a classroom you peek your head into. Do you want to further explore the first floor (1) or go to the second floor (2)?");
@@ -132,7 +132,7 @@ public class Game {
         }
         else if(myUser.location == 0){
             if ((neilsonscripttimeline >0) && (userinputt == "n" || userinputt == "e")) {
-                System.out.println("Where do you want to go?");
+                System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (neilsonscripttimeline==0){
                 //script(myUser.location);
                 System.out.println("Neilson is locked do you have a key to open the door? yes/no");
@@ -142,7 +142,7 @@ public class Game {
                     System.out.println("Invalid response. Please use yes or no.");
                 } else {
                     if (response){
-                        System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
+                        System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you have a flashlight to use? (1) or will you continue in the dark? (2)");
                         neilsonscripttimeline=2;
                     } else {
                         System.out.println("go find the key!!");
@@ -168,7 +168,7 @@ public class Game {
                    neilsonscripttimeline=4;
                 } else {
                     System.out.println("the stairs have taken you back to the lobby? that's weird");
-                    neilsonscripttimeline=0;
+                    neilsonscripttimeline = 2;
                 }
             } else if (neilsonscripttimeline==4){
                 if (userinputt == "yes" || userinputt == "no") {
@@ -207,7 +207,7 @@ public class Game {
             }
         } else if (myUser.location == 2) {
             if ((burtonscripttimeline > 0 && burtonscripttimeline < 2) && (userinputt == "s" || userinputt == "w")) {
-                System.out.println("Where do you want to go?");
+                System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (burtonscripttimeline == 0) {
                 burtonscripttimeline = 1;
                 //script(2);
@@ -228,7 +228,7 @@ public class Game {
                 }
         } else if (myUser.location == 3) {
             if ((lawnscripttimeline > 0 && lawnscripttimeline <5) && (userinputt == "n" || userinputt == "w")) {
-                System.out.println("Where do you want to go?");
+                System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
                 lawnscripttimeline = 1;
                 // script(myUser.location);
@@ -287,7 +287,7 @@ public class Game {
     
         //INSTRUCITONS
         System.out.println("\n");
-        System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");
+        System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Use n, s, e, w to move. You can access your inventory at any time by inputting inventory.");
         System.out.println("\n");        
         myGame.buildingscripts("yes");
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
