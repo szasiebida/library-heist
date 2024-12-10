@@ -277,14 +277,32 @@ public class Game {
                 myGame.script(myGame.myUser.location);
                 myGame.buildingscripts("n");
             } else if (userResponse.equals("s")) {
+                myGame.neilsonscripttimeline = 0;
+                if (myGame.bassscripttimeline < 3) {
+                    myGame.bassscripttimeline = 0;
+                } if (myGame.burtonscripttimeline < 2){
+                    myGame.burtonscripttimeline = 0;
+                }
                 myGame.myUser.move("s", myGame.map);
                 myGame.script(myGame.myUser.location);
                 myGame.buildingscripts("s");
             } else if (userResponse.equals("e")) {
+                myGame.neilsonscripttimeline = 0;
+                if (myGame.bassscripttimeline < 3) {
+                    myGame.bassscripttimeline = 0;
+                } if (myGame.burtonscripttimeline < 2){
+                    myGame.burtonscripttimeline = 0;
+                }
                 myGame.myUser.move("e", myGame.map);
                 myGame.script(myGame.myUser.location);
                 myGame.buildingscripts("e");
             } else if (userResponse.equals("w")) {
+                myGame.neilsonscripttimeline = 0;
+                if (myGame.bassscripttimeline < 3) {
+                    myGame.bassscripttimeline = 0;
+                } if (myGame.burtonscripttimeline < 2){
+                    myGame.burtonscripttimeline = 0;
+                }
                 myGame.myUser.move("w", myGame.map);
                 myGame.script(myGame.myUser.location);
                 myGame.buildingscripts("w");
