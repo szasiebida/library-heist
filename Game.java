@@ -198,6 +198,8 @@ public class Game {
                     lawnscripttimeline = 4;
                     System.out.println("Okay we will leave that there. Where to next?");
                 }
+            } else if (lawnscripttimeline == 5) {
+                System.out.println("There is nothing here. It's quite dark out. Where do you want to go next?");
             }
         }
     }
