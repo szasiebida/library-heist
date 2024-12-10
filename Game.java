@@ -342,21 +342,33 @@ public class Game {
                 myGame.response = true;
                 myGame.buildingscripts("2");
             } else if (userResponse.equals("yes")) {
-                myGame.response = true;
-                myGame.buildingscripts("yes");
+                    myGame.response = true;
+                    myGame.buildingscripts("yes");
             } else if (userResponse.equals("no")) {
-                myGame.response = false;
-                myGame.buildingscripts("no");
+                    myGame.response = false;
+                    myGame.buildingscripts("no");
             } else if (userResponse.contains("inventory")) {
                 myGame.myUser.printInventory();
             } else if (userResponse.contains("inspect")) {
                 //
             } else {
                 System.out.println("We don't have that function. Please try something else.");
+            } if (!myGame.myUser.alive) {
+                System.out.println("Do you want to play again? (yes/no)");
+            
+                String playAgain = userInput.nextLine().toLowerCase();
+            
+                if (playAgain.equals("yes")) {
+                    main(args);
+                } else {
+                    break; // Exit the loop and end the game
+                }
             }
-            if (myGame.myUser.alive==false){
-                break;
-            }
+
+
+            // if (myGame.myUser.alive==false){
+            //     System.out.println("do you want to play again?");
+            // }
 
 
         } while (stillPlaying);
