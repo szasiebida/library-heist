@@ -90,7 +90,7 @@ public class Game {
     public void buildingscripts(String userinputt) {
         //use yes no instead of y/n
         if (myUser.location == 1) {
-            if (userinputt == "s" || userinputt == "e") {
+            if ((bassscripttimeline == 1 || bassscripttimeline == 2) && (userinputt == "s" || userinputt == "e")) {
                 System.out.println("Where do you want to go?");
             } else if (bassscripttimeline == 0) {
                 bassscripttimeline = 1;
@@ -124,7 +124,7 @@ public class Game {
                         myUser.alive=false;
                     }
                 } else {
-                    System.out.print("Invalid response. Please use yes or no.");
+                    System.out.println("Invalid response. Please use yes or no.");
                 }
             } else if (bassscripttimeline == 3) {
                 // script(myUser.location);
@@ -132,21 +132,25 @@ public class Game {
             }
         }
         else if(myUser.location == 0){
-            if (userinputt == "n" || userinputt == "e") {
+            if ((neilsonscripttimeline >0) && (userinputt == "n" || userinputt == "e")) {
                 System.out.println("Where do you want to go?");
             } else if (neilsonscripttimeline==0){
                 script(myUser.location);
                 System.out.println("Neilson is locked do you have a key to open the door? yes/no");
                 neilsonscripttimeline=1;
             }else if (neilsonscripttimeline==1){
-                if (response){
-                    System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
-                    neilsonscripttimeline=2;
+                if (userinputt == "1" || userinputt == "2") {
+                    System.out.println("Invalid response. Please use yes or no.");
                 } else {
-                    System.out.println("go find the key!!");
-                    neilsonscripttimeline=0;
+                    if (response){
+                        System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
+                        neilsonscripttimeline=2;
+                    } else {
+                        System.out.println("go find the key!!");
+                        neilsonscripttimeline=0;
+                    }
                 }
-            } else if (neilsonscripttimeline==2){
+            } else if (neilsonscripttimeline==2){ //HEWRERERERER
                 if (response==false && myUser.inventory.contains(flashlight)){
                     neilsonscripttimeline=3;
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
@@ -192,7 +196,7 @@ public class Game {
 
             }
         } else if (myUser.location == 2) {
-            if (userinputt == "s" || userinputt == "w") {
+            if ((burtonscripttimeline > 0 && burtonscripttimeline < 5) && (userinputt == "s" || userinputt == "w")) {
                 System.out.println("Where do you want to go?");
             } else if (burtonscripttimeline == 0) {
                 burtonscripttimeline = 1;
@@ -213,7 +217,7 @@ public class Game {
                 myUser.alive=false;
                 }
         } else if (myUser.location == 3) {
-            if (userinputt == "n" || userinputt == "w") {
+            if ((lawnscripttimeline > 0 && lawnscripttimeline <5) && (userinputt == "n" || userinputt == "w")) {
                 System.out.println("Where do you want to go?");
             } else if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
                 lawnscripttimeline = 1;
