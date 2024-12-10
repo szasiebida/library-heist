@@ -135,7 +135,7 @@ public class Game {
             if ((neilsonscripttimeline >0) && (userinputt == "n" || userinputt == "e")) {
                 System.out.println("Where do you want to go?");
             } else if (neilsonscripttimeline==0){
-                script(myUser.location);
+                //script(myUser.location);
                 System.out.println("Neilson is locked do you have a key to open the door? yes/no");
                 neilsonscripttimeline=1;
             }else if (neilsonscripttimeline==1){
