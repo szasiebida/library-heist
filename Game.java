@@ -149,16 +149,20 @@ public class Game {
                         neilsonscripttimeline=0;
                     }
                 }
-            } else if (neilsonscripttimeline==2){ //HEWRERERERER
-                if (response==false && myUser.inventory.contains(flashlight)){
+            } else if (neilsonscripttimeline==2) { 
+                if (userinputt == "yes" || userinputt == "no") {
+                    System.out.println("Invalid response. Please use 1 or 2.");
+                } else if (response==false && myUser.inventory.contains(flashlight)){
                     neilsonscripttimeline=3;
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
                 } else {
                     System.out.println("it's dark and the ghosts got you");
                     myUser.alive=false;
                 }
-            } else if (neilsonscripttimeline==3){
-                if (response==false){
+            } else if (neilsonscripttimeline==3) {
+                if (userinputt == "yes" || userinputt == "no") {
+                    System.out.println("Invalid response. Please use 1 or 2.");
+                } else if (response==false){
                    System.out.println("In the elevator you have met a ghost-");
                    System.out.println("Hello there! I didn't know they let humans in after dark- would you like to take a rest with me these books are making me awfully sleepy (1) or no (2)");
                    neilsonscripttimeline=4;
@@ -167,7 +171,9 @@ public class Game {
                     neilsonscripttimeline=0;
                 }
             } else if (neilsonscripttimeline==4){
-                if(response==false){
+                if (userinputt == "yes" || userinputt == "no") {
+                    System.out.println("Invalid response. Please use 1 or 2.");
+                } else if(response==false) {
                     System.out.println("yikes! the ghost convinved you to fall asleep and campo caught you in the morning!");
                     myUser.alive=false;
                 } else {
@@ -176,8 +182,10 @@ public class Game {
                     System.out.println("ding! You have made it to the third floor!!");
                     System.out.println("The doors open- to your right is a closed room and to your left is the classics room do you want to go in? yes/no");
                 }
-            } else if (neilsonscripttimeline==5){
-                if (response){
+            } else if (neilsonscripttimeline==5) {
+                if (userinputt == "1" || userinputt == "2") {
+                    System.out.println("Invalid response. Please use yes or no.");
+                } else if (response) {
                     System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
                     neilsonscripttimeline=6;
                 } else {
@@ -185,8 +193,10 @@ public class Game {
                     myUser.alive=false;
                 }
 
-            }else if (neilsonscripttimeline==6){
-                if (response==false  && myUser.inventory.contains(duffel)){
+            }else if (neilsonscripttimeline==6) {
+                if (userinputt == "yes" || userinputt == "no") {
+                    System.out.println("Invalid response. Please use 1 or 2.");
+                } else if (response==false  && myUser.inventory.contains(duffel)){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
                     myUser.alive=false;
                 } else {
