@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//bug when given a prompt cannot enter a direction
+//probably should not increment the storyline until the user responds with one or 2  
+//everytime you move to a new room should call the script that tells you where you are and whats around you 
+
 
 public class Game {
     
@@ -19,22 +23,16 @@ public class Game {
     public String tothewest;
     public boolean response;
     public int bassscripttimeline;
-
     public int neilsonscripttimeline;
-    public boolean useflashlight; 
-    public boolean elevator; 
 
-
-    public boolean stillPlaying; //figure out how to incorporate this with the loop logic 
 
     /**
      * constrcutor for the game 
      * initializes the map 
      */
     public Game(){
-        this.stillPlaying=true;
         this.map=new ArrayList<Room>();
-        map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, true)); // Room 0
+        map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, false)); // Room 0
         map.add(new Room("Bass Hall", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
         map.add(new Room("Burton Hall", "Burton Hall", 3, 1, -1, -1, false)); //Room 2
         map.add(new Room("Lawn", "There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag.", -1, 0, 2, -1, false)); //Room 3
@@ -76,7 +74,30 @@ public class Game {
         } else {
             tothewest = map.get(wcoordinate).getName();
         }
-        System.out.println("Welcome to " + currentname + ". To the North is " + tothenorth + ". To the East is " + totheeast + ". To the South is " + tothesouth + ". To the West is " + tothewest + ".");
+        // System.out.println("Welcome to " + currentname + ". To the North is " + tothenorth + ". To the East is " + totheeast + ". To the South is " + tothesouth + ". To the West is " + tothewest + ".");
+        // if (myUser.location == 1) {
+        //     if (bassscripttimeline == 0) {
+        //         bassscripttimeline = 1;
+        //         System.out.println("Upon entrance to Bass Hall, you encounter students studying quietly in the foyer area and a classroom you peek your head into. Do you want to further explore the first floor (1) or go to the second floor (2)?");
+        //     }
+        //     else if (bassscripttimeline == 1) {
+        //         if (goupinbuilding == true) {
+        //             bassscripttimeline = 2;
+        //             System.out.println("There are groups of students in all the calssrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (y/n)");
+        //         } else {
+        //             bassscripttimeline = 2;
+        //             System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate?");
+        //         }
+        //     }
+        //     else if (bassscripttimeline == 2) {
+        //         if (exit == true) {
+        //             bassscripttimeline = 3;
+        //             System.out.println("You follow all the students to Burton Hall.");
+        //             myUser.move("w", map);
+        //             script(myUser.location);
+        //         }
+        //     }
+        // }
     }
 
     //i dont thing building script needs to take in locations 
@@ -90,10 +111,10 @@ public class Game {
             else if (bassscripttimeline == 1) {
                 if (response == true) {
                     bassscripttimeline = 2;
-                    System.out.println("There are groups of students in all the calssrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (y/n)");
+                    System.out.println("There are groups of students in all the calssrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (yes/no)");
                 } else {
                     bassscripttimeline = 2;
-                    System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate? (y/n)");
+                    System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate? (yes/no)");
                 }
             } else if (bassscripttimeline == 2) {
                 if (response == true) {
@@ -102,7 +123,8 @@ public class Game {
                     myUser.move("w", map);
                     script(myUser.location);
                 } else {
-                    System.out.println("You get trampled by the students going to investigate campo's appearance. Restart game?");
+                    System.out.println("You get trampled by the students going to investigate campo's appearance");
+                    myUser.alive=false;
                 }
             } else if (bassscripttimeline == 3) {
                 script(myUser.location);
@@ -115,16 +137,15 @@ public class Game {
                 System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
                 neilsonscripttimeline=1;
             } else if (neilsonscripttimeline==1){
-                if (useflashlight){
+                if (response==false){
                     neilsonscripttimeline=2;
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
                 } else {
                     System.out.println("it's dark and the ghosts got you");
                     myUser.alive=false;
-                    //figure out how to make this end the game
                 }
             } else if (neilsonscripttimeline==2){
-                if (elevator){
+                if (response==false){
                    System.out.println("In the elevator you have met a ghost-");
                    System.out.println("Hello there! I didn't know they let humans in after dark- would you like to take a rest with me these books are making me awfully sleepy (1) or no (2)");
                    neilsonscripttimeline=3;
@@ -133,7 +154,7 @@ public class Game {
                     neilsonscripttimeline=0;
                 }
             } else if (neilsonscripttimeline==3){
-                if(elevator){
+                if(response==false){
                     System.out.println("yikes! the ghost convinved you to fall asleep and campo caught you in the morning!");
                     myUser.alive=false;
                 } else {
@@ -143,7 +164,7 @@ public class Game {
                     System.out.println("The doors open- to your right is a closed room and to your left is the classics room do you want to go in? yes/no");
                 }
             } else if (neilsonscripttimeline==4){
-                if (exit){
+                if (response){
                     System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
                     neilsonscripttimeline=5;
                 } else {
@@ -152,7 +173,7 @@ public class Game {
                 }
 
             }else if (neilsonscripttimeline==5){
-                if (elevator){
+                if (response==false){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
                 } else {
                     System.out.println("you have a great moral compass but you also lost sorry :()");
@@ -172,9 +193,8 @@ public class Game {
     public static void main(String[] args) {
         Game myGame= new Game();
         myGame.bassscripttimeline = 0;
-        myGame.play();
 
-         //This is a "flag" to let us know when the loop should end
+        //This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
 
         // We'll use this to get input from the user.
@@ -208,11 +228,12 @@ public class Game {
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("1")) {
                 myGame.response = false;
-                myGame.useflashlight=true;
-                myGame.elevator=true;
+                // myGame.useflashlight=true;
+                // myGame.elevator=true;
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("2")) {
-                myGame.goupinbuilding = true;
+                myGame.response = true;
+                // myGame.goupinbuilding = true; //delete
                 myGame.buildingscripts(myGame.myUser.location);
             } else if (userResponse.equals("yes")) {
                 myGame.response = true;
@@ -226,6 +247,9 @@ public class Game {
                 //callgrabitem
             } else {
                 System.out.println("We don't have that function. Please try something else.");
+            }
+            if (myGame.myUser.alive==false){
+                break;
             }
 
 
