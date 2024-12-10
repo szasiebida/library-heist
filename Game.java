@@ -24,6 +24,8 @@ public class Game {
     public boolean response;
     public int bassscripttimeline;
     public int neilsonscripttimeline;
+    public int burtonscripttimeline;
+    public int lawnscripttimeline;
 
 
     /**
@@ -35,7 +37,7 @@ public class Game {
         map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, false)); // Room 0
         map.add(new Room("Bass Hall", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
         map.add(new Room("Burton Hall", "Burton Hall", 3, 1, -1, -1, false)); //Room 2
-        map.add(new Room("Lawn", "There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag.", -1, 0, 2, -1, false)); //Room 3
+        map.add(new Room("Lawn", "Burton Lawn", -1, 0, 2, -1, false)); //Room 3
         //map.add(new Room("Paradise Pond", "Whoops, you fell in. Goodbye.", 0, 0, 0, 0, false));
         this.myUser= new User(1); //player with no inventory starting in room 1, bass
         Item key= new Item("key", "unlocks Neilson");
@@ -99,6 +101,7 @@ public class Game {
                     System.out.println("You follow all the students to Burton Hall.");
                     myUser.move("w", map);
                     script(myUser.location);
+                    buildingscripts(myUser.location);
                 } else {
                     System.out.println("You get trampled by the students going to investigate campo's appearance");
                     myUser.alive=false;
@@ -158,8 +161,34 @@ public class Game {
                 }
 
             }
+        } else if (myUser.location == 2) {
+            if (burtonscripttimeline == 0) {
+                burtonscripttimeline = 1;
+                System.out.println("Campo is inside of Burton. Upon investigation, you see that someone broke the fish and crab tank by the entrance. Water is everywhere and there is a lot of chaos. You notice that a campo officer has dropped their keys. Do you want to give them back (1) or keep them (2)?");
+            } else if (burtonscripttimeline == 1) {
+                if (response == true) {
+                    burtonscripttimeline = 2;
+                    System.out.println("You have pocketed the keys and seem to have gotten away with it. Where do you want to go next?");
+                } else {
+                    System.out.println("You give campo the keys and they think that you were trying to steal them. They detain you for further questioning. You have failed this quest.");
+                    myUser.alive=false;
+                } 
+            } else if (burtonscripttimeline > 2) {
+                System.out.println("The mess has been cleaned up. Campo is still here looking for their missing keys. They know you've taken them, and you are detained. You have failed this quest.");
+                myUser.alive=false;
+                }
+        } else if (myUser.location == 3) {
+            if (lawnscripttimeline == 0) {
+                lawnscripttimeline = 1;
+                System.out.println("There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag. Do you want to investigate? (yes or no)");
+            } else if (lawnscripttimeline == 1) {
+                if (response == true) {
+                    System.out.println(" congrats on getting that bag. where next?");
+                }
+            }
         }
-        }
+    }
+    
                 
         //myUser.inventory.contains(duffel) when script=5
         //&& myUser.inventory.contains() for script =2
@@ -170,6 +199,9 @@ public class Game {
     public static void main(String[] args) {
         Game myGame= new Game();
         myGame.bassscripttimeline = 0;
+        myGame.burtonscripttimeline = 0;
+        myGame.neilsonscripttimeline = 0;
+        myGame.lawnscripttimeline = 0;
 
         //This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
