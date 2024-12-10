@@ -164,6 +164,7 @@ public class Game {
         } else if (myUser.location == 2) {
             if (burtonscripttimeline == 0) {
                 burtonscripttimeline = 1;
+                script(2);
                 System.out.println("Campo is inside of Burton. Upon investigation, you see that someone broke the fish and crab tank by the entrance. Water is everywhere and there is a lot of chaos. You notice that a campo officer has dropped their keys. Do you want to give them back (1) or keep them (2)?");
             } else if (burtonscripttimeline == 1) {
                 if (response == true) {
