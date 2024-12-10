@@ -92,10 +92,12 @@ public class Game {
                 System.out.println("Upon entrance to Bass Hall, you encounter students studying quietly in the foyer area and a classroom you peek your head into. Do you want to further explore the first floor (1) or go to the second floor (2)?");
             }
             else if (bassscripttimeline == 1) {
-                if (userinputt == "1" || userinputt == "2") {
+                if (userinputt == "yes" || userinputt == "no") {
+                    System.out.println("Invalid response, please try again with 1 or 2.");
+                } else if (userinputt == "1" || userinputt == "2") {
                     if (response == true) {
                         bassscripttimeline = 2;
-                        System.out.println("There are groups of students in all the calssrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (yes/no)");
+                        System.out.println("There are groups of students in all the classrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (yes/no)");
                     } else {
                         bassscripttimeline = 2;
                         System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate? (yes/no)");
@@ -105,18 +107,22 @@ public class Game {
                     buildingscripts(userinputt);
                 } 
             } else if (bassscripttimeline == 2) {
-                if (response == true) {
-                    bassscripttimeline = 3;
-                    System.out.println("You follow all the students to Burton Hall.");
-                    myUser.move("w", map);
-                    script(myUser.location);
-                    buildingscripts("yes");
+                if (userinputt == "yes" || userinputt == "no") {
+                    if (response == true) {
+                        bassscripttimeline = 3;
+                        System.out.println("You follow all the students to Burton Hall.");
+                        myUser.move("w", map);
+                        script(myUser.location);
+                        buildingscripts("yes");
+                    } else {
+                        System.out.println("You get trampled by the students going to investigate campo's appearance");
+                        myUser.alive=false;
+                    }
                 } else {
-                    System.out.println("You get trampled by the students going to investigate campo's appearance");
-                    myUser.alive=false;
+                    System.out.print("Invalid response. Please use yes or no.");
                 }
             } else if (bassscripttimeline == 3) {
-                script(myUser.location);
+                // script(myUser.location);
                 System.out.println("Nothing has changed in Bass Hall. It is still quiet and students are still studying. Where do you want to go next?");
             }
         }
@@ -190,7 +196,7 @@ public class Game {
         } else if (myUser.location == 3) {
             if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
                 lawnscripttimeline = 1;
-                script(myUser.location);
+                // script(myUser.location);
                 System.out.println("There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag. Do you want to investigate? (yes or no)");
             } else if (lawnscripttimeline == 1) {
                 if (response == true) {
@@ -246,16 +252,26 @@ public class Game {
             userResponse = userInput.nextLine().toLowerCase();
 
             if (userResponse.equals("n")) {
+                myGame.neilsonscripttimeline = 0;
+                if (myGame.bassscripttimeline < 3) {
+                    myGame.bassscripttimeline = 0;
+                } if (myGame.burtonscripttimeline < 2){
+                    myGame.burtonscripttimeline = 0;
+                }
                 myGame.myUser.move("n", myGame.map);
+                myGame.script(myGame.myUser.location);
                 myGame.buildingscripts("n");
             } else if (userResponse.equals("s")) {
                 myGame.myUser.move("s", myGame.map);
+                myGame.script(myGame.myUser.location);
                 myGame.buildingscripts("s");
             } else if (userResponse.equals("e")) {
                 myGame.myUser.move("e", myGame.map);
+                myGame.script(myGame.myUser.location);
                 myGame.buildingscripts("e");
             } else if (userResponse.equals("w")) {
                 myGame.myUser.move("w", myGame.map);
+                myGame.script(myGame.myUser.location);
                 myGame.buildingscripts("w");
             } else if (userResponse.equals("1")) {
                 myGame.response = false;
