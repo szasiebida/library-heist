@@ -46,7 +46,6 @@ public class Game {
         this.key= new Item("key", "unlocks Neilson");
         this.flashlight= new Item("flashlight","make things bright");
         this.duffel= new Item ("duffel","for bookks");
-        neilsonscripttimeline = 0;
     }    
 
     public void play(){
@@ -189,6 +188,7 @@ public class Game {
             }else if (neilsonscripttimeline==6){
                 if (response==false  && myUser.inventory.contains(duffel)){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
+                    myUser.alive=false;
                 } else {
                     System.out.println("you have a great moral compass but you also lost sorry :()");
                     myUser.alive=false;
@@ -268,10 +268,12 @@ public class Game {
         String userResponse = "";
 
         //OPENEING
-        System.out.println("Welcome to Smith College, home of the rare books collection. You have been hired to steal the entire collection before dawn. If completed, you will be paid $1,000,000.00 in cash. If not, you will face the consequences of getting caught. Good luck.");
+        System.out.println("Welcome to Smith College, home of the rare books collection. You have been hired to steal the entire collection before dawn. If completed, you will be paid       $1,000,000.00 in cash. If not, you will face the consequences of getting caught. Good luck.");
     
         //INSTRUCITONS
-        System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");        
+        System.out.println("\n");
+        System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Where would you like to go? Use n, s, e, w to move.");
+        System.out.println("\n");        
         myGame.buildingscripts("yes");
         // The do...while structure means we execute the body of the loop once before checking the stopping condition
         do {
@@ -333,10 +335,10 @@ public class Game {
             } else if (userResponse.equals("no")) {
                 myGame.response = false;
                 myGame.buildingscripts("no");
-            } else if (userResponse.contains("use")) {
-                //calluseitem
-            } else if (userResponse.contains("grab")||userResponse.contains("take")) {
-                //callgrabitem
+            } else if (userResponse.contains("inventory")) {
+                myGame.myUser.printInventory();
+            } else if (userResponse.contains("inspect")) {
+                //
             } else {
                 System.out.println("We don't have that function. Please try something else.");
             }
