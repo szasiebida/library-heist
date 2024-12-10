@@ -37,7 +37,7 @@ public class Game {
      */
     public Game(){
         this.map=new ArrayList<Room>();
-        map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, false)); // Room 0
+        map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, true)); // Room 0
         map.add(new Room("Bass Hall", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
         map.add(new Room("Burton Hall", "Burton Hall", 3, 1, -1, -1, false)); //Room 2
         map.add(new Room("Lawn", "Burton Lawn", -1, 0, 2, -1, false)); //Room 3
@@ -84,6 +84,9 @@ public class Game {
     }
 
     //i dont thing building script needs to take in locations 
+    //key functionality 
+    //fix the timeline update thingy
+    //inspect or something 
     public void buildingscripts(String userinputt) {
         //use yes no instead of y/n
         if (myUser.location == 1) {
@@ -129,45 +132,53 @@ public class Game {
         else if(myUser.location == 0){
             if (neilsonscripttimeline==0){
                 script(myUser.location);
-                System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
+                System.out.println("Neilson is locked do you have a key to open the door? yes/no");
                 neilsonscripttimeline=1;
-            } else if (neilsonscripttimeline==1){
-                if (response==false && myUser.inventory.contains(flashlight)){
+            }else if (neilsonscripttimeline==1){
+                if (response){
+                    System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you use you have a flashlight to use? (1) or will you continue in the dark? (2)");
                     neilsonscripttimeline=2;
+                } else {
+                    System.out.println("go find the key!!");
+                    neilsonscripttimeline=0;
+                }
+            } else if (neilsonscripttimeline==2){
+                if (response==false && myUser.inventory.contains(flashlight)){
+                    neilsonscripttimeline=3;
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
                 } else {
                     System.out.println("it's dark and the ghosts got you");
                     myUser.alive=false;
                 }
-            } else if (neilsonscripttimeline==2){
+            } else if (neilsonscripttimeline==3){
                 if (response==false){
                    System.out.println("In the elevator you have met a ghost-");
                    System.out.println("Hello there! I didn't know they let humans in after dark- would you like to take a rest with me these books are making me awfully sleepy (1) or no (2)");
-                   neilsonscripttimeline=3;
+                   neilsonscripttimeline=4;
                 } else {
                     System.out.println("the stairs have taken you back to the lobby? that's weird");
                     neilsonscripttimeline=0;
                 }
-            } else if (neilsonscripttimeline==3){
+            } else if (neilsonscripttimeline==4){
                 if(response==false){
                     System.out.println("yikes! the ghost convinved you to fall asleep and campo caught you in the morning!");
                     myUser.alive=false;
                 } else {
-                    neilsonscripttimeline=4;
+                    neilsonscripttimeline=5;
                     System.out.println("The ghost lets out a sob and mysteriously floats away");
                     System.out.println("ding! You have made it to the third floor!!");
                     System.out.println("The doors open- to your right is a closed room and to your left is the classics room do you want to go in? yes/no");
                 }
-            } else if (neilsonscripttimeline==4){
+            } else if (neilsonscripttimeline==5){
                 if (response){
                     System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
-                    neilsonscripttimeline=5;
+                    neilsonscripttimeline=6;
                 } else {
                     System.out.println("then why are you playing?!!");
                     myUser.alive=false;
                 }
 
-            }else if (neilsonscripttimeline==5){
+            }else if (neilsonscripttimeline==6){
                 if (response==false  && myUser.inventory.contains(duffel)){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
                 } else {
@@ -184,6 +195,8 @@ public class Game {
             } else if (burtonscripttimeline == 1) {
                 if (response == true) {
                     burtonscripttimeline = 2;
+                    myUser.inventory.add(key);
+                    map.get(0).setLocked(false);
                     System.out.println("You have pocketed the keys and seem to have gotten away with it. Where do you want to go next?");
                 } else {
                     System.out.println("You give campo the keys and they think that you were trying to steal them. They detain you for further questioning. You have failed this quest.");
@@ -208,6 +221,8 @@ public class Game {
                 }
             } else if (lawnscripttimeline == 3) {
                 if (response == true) {
+                    myUser.inventory.add(duffel);
+                    myUser.inventory.add(flashlight);
                     lawnscripttimeline = 5;
                     System.out.println("Congrats, you have obtained a duffel bag and a flashlight! Where to next?");
                 } else {
