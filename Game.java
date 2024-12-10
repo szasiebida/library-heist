@@ -322,12 +322,9 @@ public class Game {
                 myGame.buildingscripts("w");
             } else if (userResponse.equals("1")) {
                 myGame.response = false;
-                // myGame.useflashlight=true;
-                // myGame.elevator=true;
                 myGame.buildingscripts("1");
             } else if (userResponse.equals("2")) {
                 myGame.response = true;
-                // myGame.goupinbuilding = true; //delete
                 myGame.buildingscripts("2");
             } else if (userResponse.equals("yes")) {
                 myGame.response = true;
@@ -361,54 +358,6 @@ public class Game {
 
    // }
 
-   //somewhere need to have the line if myUser.alive=false --> end game loop
     }
 }
-
-
-//private int plotState; // Tracks the current stage in the plot
-
-
-// private int handlePlotChoices(String command, int plotState) {
-//     if (plotState == 1) {
-//         if (command.equals("1")) {
-//             System.out.println("You chose to explore the first floor further. It's eerily quiet.");
-//             plotState = 2; // Move to the next state
-//         } else if (command.equals("2")) {
-//             System.out.println("You ascend to the second floor. Students are chatting loudly.");
-//             plotState = 3; // Different state
-//         } else {
-//             System.out.println("Invalid choice. Please choose 1 or 2.");
-//         }
-//     } else if (plotState == 2) {
-//         System.out.println("You continue exploring the first floor, but it's uneventful.");
-//         plotState = 0; // End this branch of the plot
-//     } else if (plotState == 3) {
-//         System.out.println("You hear someone mentioning campo at Burton Hall. Do you go investigate? (y/n)");
-//         if (command.equals("y")) {
-//             System.out.println("You head towards Burton Hall.");
-//             myUser.move("w", map);
-//             plotState = 0; // Reset the plot for the next event
-//         } else if (command.equals("n")) {
-//             System.out.println("You stay on the second floor.");
-//             plotState = 0; // Reset the plot
-//         } else {
-//             System.out.println("Invalid choice. Please choose y or n.");
-//         }
-//     }
-//      return plotState 
-// }
-
-
-
-// private void describeCurrentRoom() {
-//     Room currentRoom = map.get(myUser.getLocation());
-//     System.out.println("You are in " + currentRoom.getName() + ". " + currentRoom.getDescription());
-
-//     if (myUser.getLocation() == 1 && plotState == 0) { // Bass Hall plot trigger
-//         System.out.println("Do you want to explore the first floor (1) or go to the second floor (2)?");
-//         plotState = 1; // Set the plot state
-//     }
-// }
-
 
