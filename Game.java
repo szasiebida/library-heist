@@ -137,7 +137,7 @@ public class Game {
                 //script(myUser.location);
                 System.out.println("Neilson is locked do you have a key to open the door? yes/no");
                 neilsonscripttimeline=1;
-            }else if (neilsonscripttimeline==1){
+            } else if (neilsonscripttimeline==1){
                 if (userinputt == "1" || userinputt == "2") {
                     System.out.println("Invalid response. Please use yes or no.");
                 } else {
