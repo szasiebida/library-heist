@@ -206,7 +206,7 @@ public class Game {
 
             }
         } else if (myUser.location == 2) {
-            if ((burtonscripttimeline > 0 && burtonscripttimeline < 5) && (userinputt == "s" || userinputt == "w")) {
+            if ((burtonscripttimeline > 0 && burtonscripttimeline < 2) && (userinputt == "s" || userinputt == "w")) {
                 System.out.println("Where do you want to go?");
             } else if (burtonscripttimeline == 0) {
                 burtonscripttimeline = 1;
@@ -356,6 +356,7 @@ public class Game {
             }
             if (myGame.myUser.alive==false){
                 break;
+                //System.out.println("Do you want to try again?");
             }
 
 
