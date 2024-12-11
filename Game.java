@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
 //bug when given a prompt cannot enter a direction
 //probably should not increment the storyline until the user responds with one or 2  
 //everytime you move to a new room should call the script that tells you where you are and whats around you 
@@ -297,7 +299,7 @@ public class Game {
         do {
 
             userResponse = userInput.nextLine().toLowerCase();
-
+            
             if (userResponse.equals("n")) {
                 myGame.neilsonscripttimeline = 0;
                 if (myGame.bassscripttimeline < 3) {
@@ -357,6 +359,12 @@ public class Game {
             } else {
                 System.out.println("We don't have that function. Please try something else.");
             } if (!myGame.myUser.alive) {
+
+                DisplayImage img = new DisplayImage();
+                JFrame f = new JFrame();
+                f.add(img);
+                f.setSize(800,480);
+                f.setVisible(true);
                 System.out.println("Do you want to play again? (yes/no)");
             
                 String playAgain = userInput.nextLine().toLowerCase();
