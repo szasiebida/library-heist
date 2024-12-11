@@ -289,7 +289,13 @@ public class Game {
 
         System.out.println("\n");
         System.out.println("Welcome to Smith College, home of the rare books collection. You have been hired to steal the entire collection before dawn. If completed, you will be paid       $1,000,000.00 in cash. If not, you will face the consequences of getting caught. Good luck.");
-    
+        
+        // String text = "This text is in italics";
+        // // ANSI escape code for italics
+        // String italicsStart = "\033[3m";
+        // String italicsEnd = "\033[0m";
+        // System.out.println(italicsStart + text + italicsEnd);
+
         //INSTRUCITONS
         System.out.println("\n");
         System.out.println("You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. Your inventory is currently empty. Use n, s, e, w to move. You can access your inventory at any time by inputting inventory.");
