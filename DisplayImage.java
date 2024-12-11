@@ -5,7 +5,7 @@ public class DisplayImage extends Canvas {
 
     public void paint(Graphics g) {
         Toolkit t = Toolkit.getDefaultToolkit();
-        Image i = t.getImage("C:\\Users\\mitzi\\OneDrive\\Documents\\CSC 120\\library-heist\\gameover.png");
+        Image i = t.getImage("gameover.png");
         g.drawImage(i,0,0,this);
     }
 
