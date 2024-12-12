@@ -22,3 +22,7 @@ CHALLENGES
 In order to unlock Neilson library you must first pick up the keys in Burton from the campo officers 
 In order to turn the lights on in Neilson you must pick up the flashlight on the lawn 
 In order to sucessfully take the rare books collection you must first pick up the duffel on the lawn 
+
+
+OTHER
+Weinstein, the botanic gardens, the pond, and the alumnae gym are all dead ends that well end the game! Be careful! 

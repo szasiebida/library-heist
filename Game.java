@@ -42,9 +42,13 @@ public class Game {
     public Game(){
         this.map=new ArrayList<Room>();
         map.add(new Room("Neilson Library", "Neilson Library", -1, -1, 1, 3, true)); // Room 0
-        map.add(new Room("Bass Hall", "Bass Hall", 0, -1, -1, 2, false));        // Room 1
-        map.add(new Room("Burton Hall", "Burton Hall", 3, 1, -1, -1, false)); //Room 2
-        map.add(new Room("Lawn", "Burton Lawn", -1, 0, 2, -1, false)); //Room 3
+        map.add(new Room("Bass Hall", "Bass Hall", 0, 7, -1, 2, false));        // Room 1
+        map.add(new Room("Burton Hall", "Burton Hall", 3, 1, 4, 5, false)); //Room 2
+        map.add(new Room("Lawn", "Burton Lawn", 6, 0, 2, -1, false)); //Room 3
+        map.add(new Room("Paradise Pond", "Paradise Pond", 2, -1, -1, -1, false)); //Room 4
+        map.add(new Room("Botanic Gardens", "Botanic Gardens", -1, 2, -1, -1, false)); //Room 5
+        map.add(new Room("Weinstein", "Weinstein", -1, -1, 3, -1, false)); //Room 6
+        map.add(new Room("Alumnae Gym", "Alumnae Gym", -1, -1, -1, 1, false)); //Room 7
         //map.add(new Room("Paradise Pond", "Whoops, you fell in. Goodbye.", 0, 0, 0, 0, false));
         this.myUser= new User(1); //player with no inventory starting in room 1, bass
         this.key= new Item("key", "unlocks Neilson");
@@ -270,6 +274,18 @@ public class Game {
             } else if (lawnscripttimeline == 5) {
                 System.out.println("There is nothing here. It's quite dark out. Where do you want to go next?");
             }
+        } else if (myUser.location==4){
+            System.out.println("What a slippery slop you've fallen down! Why would you go to the pond at night time?? You fell in :(");
+            myUser.alive=false;
+        } else if (myUser.location==5){
+            System.out.println("Oh no! The carnivorous plants have eaten you ");
+            myUser.alive=false;
+        } else if (myUser.location==6){
+            System.out.println("You got distracted by a poetry reading and did not complete the mission, better luck next time!");
+            myUser.alive=false;
+        } else if (myUser.location==7){
+            System.out.println("You lost track of time talking with your friends! Never go to the Alumnae Gym to get anything done");
+            myUser.alive=false;
         }
     }
 
@@ -303,7 +319,7 @@ public class Game {
 
         //INSTRUCITONS
         System.out.println("\n");
-        System.out.println("\033[3m"+"You are currently located in Bass Hall. To the North is Neilson Library. To the East is nothing. To the South is nothing. To the West is Burton Hall. "+"\033[0m");
+        System.out.println("\033[3m"+"You are currently located in Bass Hall. To the North is Neilson Library. To the East is the Alumnae Gym. To the South is nothing. To the West is Burton Hall. "+"\033[0m");
         System.out.println("\n"); 
         System.out.println("Your inventory is currently empty. You can access your inventory at any time by inputting inventory. You can drop items at any time by typing drop ____. Use n, s, e, w to move. You can move anywhere at any time. Respond to the game promts with yes/no or 1/2 depending on the prompt.");
         System.out.println("\n");        
