@@ -3,12 +3,7 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
-//bug when given a prompt cannot enter a direction
 //probably should not increment the storyline until the user responds with one or 2  
-//everytime you move to a new room should call the script that tells you where you are and whats around you 
-
-//paradise pond + time things
-//picture 
 
 public class Game {
     
@@ -48,16 +43,12 @@ public class Game {
         map.add(new Room("Botanic Gardens", "Botanic Gardens", -1, 2, -1, -1, false)); //Room 5
         map.add(new Room("Weinstein", "Weinstein", -1, -1, 3, -1, false)); //Room 6
         map.add(new Room("Alumnae Gym", "Alumnae Gym", -1, -1, -1, 1, false)); //Room 7
-        //map.add(new Room("Paradise Pond", "Whoops, you fell in. Goodbye.", 0, 0, 0, 0, false));
         this.myUser= new User(1); //player with no inventory starting in room 1, bass
         this.key= new Item("key", "unlocks Neilson");
         this.flashlight= new Item("flashlight","make things bright");
         this.duffel= new Item ("duffel","for bookks");
     }    
 
-    public void play(){
-        //this.myUser.move("n",this.map);
-    }
 
     public void script(int location) {
         currentlocation = map.get(location);
@@ -91,10 +82,7 @@ public class Game {
         System.out.println("\n");
     }
 
-    //i dont thing building script needs to take in locations 
-    //key functionality 
-    //fix the timeline update thingy
-    //inspect or something 
+
     public void buildingscripts(String userinputt) {
         //use yes no instead of y/n
         if (myUser.location == 1) {
@@ -323,7 +311,7 @@ public class Game {
         System.out.println("Your inventory is currently empty. You can access your inventory at any time by inputting inventory. You can drop items at any time by typing drop ____. Use n, s, e, w to move. You can move anywhere at any time. Respond to the game promts with yes/no or 1/2 depending on the prompt.");
         System.out.println("\n");        
         myGame.buildingscripts("yes");
-        // The do...while structure means we execute the body of the loop once before checking the stopping condition
+
         do {
 
             userResponse = userInput.nextLine().toLowerCase();
@@ -413,15 +401,6 @@ public class Game {
 
         // Tidy up
         userInput.close();
-
-        // Once you exit the loop, you may need to deal with various possible stopping conditions
-        // if (userResponse.equals("WIN")) {
-        //     System.out.println("Yay, you won!");
-        // } else { // userResponse.equals("LOSE")
-        //     System.out.println("Better luck next time.");
-        // }
-
-   // }
 
     }
 }
