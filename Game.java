@@ -85,7 +85,7 @@ public class Game {
 
     public void buildingscripts(String userinputt) {
         //use yes no instead of y/n
-        if (myUser.location == 1) {
+        if (myUser.getLocation() == 1) {
             if (burtonscripttimeline == 2) {
                 burtonscripttimeline = 3;
             } 
@@ -115,7 +115,7 @@ public class Game {
                         bassscripttimeline = 3;
                         System.out.println("You follow all the students to Burton Hall.");
                         myUser.move("w", map);
-                        script(myUser.location);
+                        script(myUser.getLocation());
                         buildingscripts("yes");
                     } else {
                         System.out.println("You get trampled by the students going to investigate campo's appearance");
@@ -130,7 +130,7 @@ public class Game {
             }
         }
 
-        else if(myUser.location == 0){
+        else if(myUser.getLocation() == 0){
             if (burtonscripttimeline == 2) {
                 burtonscripttimeline = 3;
             } 
@@ -208,7 +208,7 @@ public class Game {
                 }
 
             }
-        } else if (myUser.location == 2) {
+        } else if (myUser.getLocation() == 2) {
             if ((burtonscripttimeline > 0 && burtonscripttimeline < 3) && (userinputt == "s" || userinputt == "w")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (burtonscripttimeline == 0) {
@@ -230,7 +230,7 @@ public class Game {
                 }       
         } 
         
-        else if (myUser.location == 3) {
+        else if (myUser.getLocation() == 3) {
             if (burtonscripttimeline == 2) {
                 burtonscripttimeline = 3;
             } 
@@ -261,16 +261,16 @@ public class Game {
             } else if (lawnscripttimeline == 5) {
                 System.out.println("There is nothing here. It's quite dark out. Where do you want to go next?");
             }
-        } else if (myUser.location==4){
+        } else if (myUser.getLocation()==4){
             System.out.println("What a slippery slope you've fallen down! Why would you go to the pond at night time?? You fell in :(");
             myUser.setAlive(false);
-        } else if (myUser.location==5){
+        } else if (myUser.getLocation()==5){
             System.out.println("Oh no! The carnivorous plants have eaten you.");
             myUser.setAlive(false);
-        } else if (myUser.location==6){
+        } else if (myUser.getLocation()==6){
             System.out.println("You got distracted by a poetry reading and did not complete the mission, better luck next time!");
             myUser.setAlive(false);
-        } else if (myUser.location==7){
+        } else if (myUser.getLocation()==7){
             System.out.println("You lost track of time talking with your friends! Never go to the Alumnae Gym to get anything done.");
             myUser.setAlive(false);
         }
@@ -324,7 +324,7 @@ public class Game {
                     myGame.burtonscripttimeline = 0;
                 }
                 myGame.myUser.move("n", myGame.map);
-                myGame.script(myGame.myUser.location);
+                myGame.script(myGame.myUser.getLocation());
                 myGame.buildingscripts("n");
             } else if (userResponse.equals("s")) {
                 myGame.neilsonscripttimeline = 0;
@@ -334,7 +334,7 @@ public class Game {
                     myGame.burtonscripttimeline = 0;
                 }
                 myGame.myUser.move("s", myGame.map);
-                myGame.script(myGame.myUser.location);
+                myGame.script(myGame.myUser.getLocation());
                 myGame.buildingscripts("s");
             } else if (userResponse.equals("e")) {
                 myGame.neilsonscripttimeline = 0;
@@ -344,7 +344,7 @@ public class Game {
                     myGame.burtonscripttimeline = 0;
                 }
                 myGame.myUser.move("e", myGame.map);
-                myGame.script(myGame.myUser.location);
+                myGame.script(myGame.myUser.getLocation());
                 myGame.buildingscripts("e");
             } else if (userResponse.equals("w")) {
                 myGame.neilsonscripttimeline = 0;
@@ -354,7 +354,7 @@ public class Game {
                     myGame.burtonscripttimeline = 0;
                 }
                 myGame.myUser.move("w", myGame.map);
-                myGame.script(myGame.myUser.location);
+                myGame.script(myGame.myUser.getLocation());
                 myGame.buildingscripts("w");
             } else if (userResponse.equals("1")) {
                 myGame.response = false;

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 public class User {
 
     private ArrayList<Item> inventory;
-    int location;   //index of the arraylist that corresponds to the room object 
+    private int location;   //index of the arraylist that corresponds to the room object 
     private boolean alive;
 
     /**
@@ -78,6 +78,14 @@ public class User {
      */
     public boolean getAlive(){
         return this.alive;
+    }
+
+    /**
+     * getter for the location attribute 
+     * @return the location
+     */
+    public int getLocation(){
+        return this.location;
     }
 
     /**
