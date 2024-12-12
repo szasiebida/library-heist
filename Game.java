@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import javax.swing.JFrame;
-
-//probably should not increment the storyline until the user responds with one or 2  
 
 public class Game {
     
@@ -21,7 +18,7 @@ public class Game {
     private String tothewest;
     private boolean response;
     private int bassscripttimeline;
-    private int neilsonscripttimeline;
+    private int neilsonscripttimeline; //script timelines are used to keep track of where players are in the storyline 
     private int burtonscripttimeline;
     private int lawnscripttimeline;
     private Item duffel;
@@ -31,7 +28,7 @@ public class Game {
 
     /**
      * constrcutor for the game 
-     * initializes the map 
+     * initializes the map with all 8 rooms, the user, and the three items that are avaliable in the gamee
      */
     public Game(){
         this.map=new ArrayList<Room>();
@@ -49,7 +46,10 @@ public class Game {
         this.duffel= new Item ("duffel","holds the rare books collection");
     }    
 
-
+    /**
+     * prints out a nice header everytime the player enters a  room that tells them what room they have entered and what's around them 
+     * @param location the users current location 
+     */
     public void script(int location) {
         currentlocation = map.get(location);
         currentname = currentlocation.getName();

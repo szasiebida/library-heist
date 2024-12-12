@@ -25,48 +25,52 @@ public class User {
             int nextRoomIndex = (map.get((location))).getN(); //geting the next room index
             if (nextRoomIndex != -1 && !map.get(nextRoomIndex).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
-            } else 
+            } else {
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
                 } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
+            }
         }
 
         if (command.equals("s")) {
             int nextRoomIndex = (map.get((location))).getS(); //geting the next room index
             if (nextRoomIndex != -1 && !map.get(nextRoomIndex).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
-            } else 
+            } else {
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
                 } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
+            }
         }
 
         if (command.equals("e")) {
             int nextRoomIndex = (map.get((location))).getE(); //geting the next room index
             if (nextRoomIndex != -1 && !map.get(nextRoomIndex).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
-            } else 
+            } else {
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
                 } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
+            }
         }
 
         if (command.equals("w")) {
             int nextRoomIndex = (map.get((location))).getW(); //geting the next room index
             if (nextRoomIndex != -1 && ! map.get(nextRoomIndex).islocked()) {
                 this.location = nextRoomIndex; // Update to the new room index
-            } else 
+            } else {
                 if(nextRoomIndex == -1){
                     System.out.println("there's no room there");
                 } else if(map.get(nextRoomIndex).islocked()){
                     System.out.println("this room is locked!");
                 }
+            }
         }
         
     }
@@ -115,7 +119,7 @@ public class User {
     }
 
     /**
-     * function that uses the item 
+     * function that uses the item by dropping it 
      * @param myitem the item the user wants to use 
      */
     public void useItem(Item myitem){
@@ -133,8 +137,9 @@ public class User {
             inventory.add(myItem);
             System.out.println(myItem.getName() + " has been added to your inventory.");
             return true;
-        } else 
+        } else {
             return false;
+        }
     }
 
     /**
@@ -147,9 +152,10 @@ public class User {
             inventory.remove(myItem);
             System.out.println(myItem.getName() + " has been removed from your inventory.");
             return true;
-        } else 
+        } else {
             System.out.println("you don't have that item");
             return false;
+        }
     }
 
     /**
@@ -179,6 +185,10 @@ public class User {
         } return null;
     }
     
+    /**
+     * getter for the inventory attribute 
+     * @return the inventory of the user
+     */
     public ArrayList<Item> getInventory(){
         return this.inventory;
     }
