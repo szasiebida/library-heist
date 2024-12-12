@@ -83,8 +83,15 @@ public class Game {
     }
 
 
+    /**
+     * function that handles all of the storyline and item interaction depening on what room the user is in as well as their choices
+     * @param userinputt the user input from the scanner
+     */
     public void buildingscripts(String userinputt) {
-        //use yes no instead of y/n
+        
+        //storylines contain multiple adventures/choices and ask prompts based on user choice 
+
+        //if the user is in bass hall (starting location)
         if (myUser.getLocation() == 1) {
             if (burtonscripttimeline == 2) {
                 burtonscripttimeline = 3;
@@ -125,11 +132,11 @@ public class Game {
                     System.out.println("Invalid response. Please use yes or no.");
                 }
             } else if (bassscripttimeline == 3) {
-                // script(myUser.location);
                 System.out.println("Nothing has changed in Bass Hall. It is still quiet and students are still studying. Where do you want to go next?");
             }
         }
 
+        // if the user is in Neilson library
         else if(myUser.getLocation() == 0){
             if (burtonscripttimeline == 2) {
                 burtonscripttimeline = 3;
@@ -137,7 +144,6 @@ public class Game {
             if ((neilsonscripttimeline >0) && (userinputt == "n" || userinputt == "e")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (neilsonscripttimeline==0){
-                //script(myUser.location);
                 System.out.println("Neilson is locked do you have a key to open the door? yes/no");
                 neilsonscripttimeline=1;
             } else if (neilsonscripttimeline==1){
@@ -208,6 +214,8 @@ public class Game {
                 }
 
             }
+        
+        // if the user is in burton 
         } else if (myUser.getLocation() == 2) {
             if ((burtonscripttimeline > 0 && burtonscripttimeline < 3) && (userinputt == "s" || userinputt == "w")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
@@ -230,6 +238,7 @@ public class Game {
                 }       
         } 
         
+        // if the user is on the lawn 
         else if (myUser.getLocation() == 3) {
             if (burtonscripttimeline == 2) {
                 burtonscripttimeline = 3;
@@ -261,15 +270,23 @@ public class Game {
             } else if (lawnscripttimeline == 5) {
                 System.out.println("There is nothing here. It's quite dark out. Where do you want to go next?");
             }
+        
+        // if the user is at the pond 
         } else if (myUser.getLocation()==4){
             System.out.println("What a slippery slope you've fallen down! Why would you go to the pond at night time?? You fell in :(");
             myUser.setAlive(false);
+        
+        // if the user is at the botanic gardens
         } else if (myUser.getLocation()==5){
             System.out.println("Oh no! The carnivorous plants have eaten you.");
             myUser.setAlive(false);
+
+        // if the user is at weinstein 
         } else if (myUser.getLocation()==6){
             System.out.println("You got distracted by a poetry reading and did not complete the mission, better luck next time!");
             myUser.setAlive(false);
+        
+        // if the user is at the alumnae gym
         } else if (myUser.getLocation()==7){
             System.out.println("You lost track of time talking with your friends! Never go to the Alumnae Gym to get anything done.");
             myUser.setAlive(false);
@@ -279,9 +296,15 @@ public class Game {
             
 
     
-
+    /**
+     * main function where user input is collected and the game loop is run 
+     * @param args
+     */
     public static void main(String[] args) {
+        // call the constructor for a new game 
         Game myGame= new Game();
+        
+        // all of the timlines for the scripts start at 0 
         myGame.bassscripttimeline = 0;
         myGame.burtonscripttimeline = 0;
         myGame.neilsonscripttimeline = 0;
@@ -304,7 +327,7 @@ public class Game {
         System.out.println("\n");
         System.out.println("Welcome to Smith College, home of the rare books collection. You have been hired to steal the entire collection before dawn. If completed, you will be paid $1,000,000.00 in cash. If not, you will face the consequences of getting caught. Good luck.");
 
-        //INSTRUCITONS
+        //INSTRUCTIONS
         System.out.println("\n");
         System.out.println("\033[3m"+"You are currently located in Bass Hall. To the North is Neilson Library. To the East is the Alumnae Gym. To the South is nothing. To the West is Burton Hall. "+"\033[0m");
         System.out.println("\n"); 
@@ -312,10 +335,13 @@ public class Game {
         System.out.println("\n");        
         myGame.buildingscripts("yes");
 
+
+        // do loop that gets all of the user input and calls the appropriate functions based on input 
         do {
 
             userResponse = userInput.nextLine().toLowerCase();
             
+            // if the user wants to go north 
             if (userResponse.equals("n")) {
                 myGame.neilsonscripttimeline = 0;
                 if (myGame.bassscripttimeline < 3) {
@@ -323,9 +349,15 @@ public class Game {
                 } if (myGame.burtonscripttimeline < 2){
                     myGame.burtonscripttimeline = 0;
                 }
+
+                // move them north 
                 myGame.myUser.move("n", myGame.map);
+                // tell them where they are 
                 myGame.script(myGame.myUser.getLocation());
+                // play the script based on their location 
                 myGame.buildingscripts("n");
+            
+            // if the user wants to go south 
             } else if (userResponse.equals("s")) {
                 myGame.neilsonscripttimeline = 0;
                 if (myGame.bassscripttimeline < 3) {
@@ -336,6 +368,8 @@ public class Game {
                 myGame.myUser.move("s", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
                 myGame.buildingscripts("s");
+            
+            // if the user wants to go east 
             } else if (userResponse.equals("e")) {
                 myGame.neilsonscripttimeline = 0;
                 if (myGame.bassscripttimeline < 3) {
@@ -346,6 +380,8 @@ public class Game {
                 myGame.myUser.move("e", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
                 myGame.buildingscripts("e");
+            
+            // if the user wants to go west 
             } else if (userResponse.equals("w")) {
                 myGame.neilsonscripttimeline = 0;
                 if (myGame.bassscripttimeline < 3) {
@@ -356,28 +392,44 @@ public class Game {
                 myGame.myUser.move("w", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
                 myGame.buildingscripts("w");
+
+            //if the user enters 1 in response to a prompt 
             } else if (userResponse.equals("1")) {
                 myGame.response = false;
                 myGame.buildingscripts("1");
+            
+            // if the user enters 2 in response to a prompt 
             } else if (userResponse.equals("2")) {
                 myGame.response = true;
                 myGame.buildingscripts("2");
+            
+            // if the user enters yes in response to a prompt 
             } else if (userResponse.equals("yes")) {
                     myGame.response = true;
                     myGame.buildingscripts("yes");
+
+            // if the user enters no in response to a prompt 
             } else if (userResponse.equals("no")) {
                     myGame.response = false;
                     myGame.buildingscripts("no");
+            
+            // if the users response contains the word inventory it prints out everything they currently have and the function within the game 
             } else if (userResponse.contains("inventory")) {
                 myGame.myUser.printInventory();
+                
+            // if the user resonse contains drop it will drop the associated item 
             } else if (userResponse.contains("drop")) {
                 String [] words=userResponse.split("\\s");
                 myGame.myUser.dropItem(myGame.myUser.findItem(words[1]));
                 if (!myGame.myUser.getInventory().contains(myGame.key)){
                     myGame.map.get(0).setLocked(true);
                 }
+            
+            // if they enter a function we dont have they get an error message 
             } else {
                 System.out.println("We don't have that function. Please try something else.");
+            
+            // if at any point the user dies the game loop ends and you are prompted to play again 
             } if (!myGame.myUser.getAlive()) {
 
                 DisplayImage img = new DisplayImage();
