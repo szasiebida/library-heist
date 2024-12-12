@@ -6,21 +6,21 @@ public class Game {
     
     private ArrayList<Room> map;
     private User myUser;
-    private String currentname;
-    private int ncoordinate;
-    private int scoordinate;
-    private int ecoordinate;
-    private int wcoordinate;
-    private Room currentlocation; 
-    private String tothenorth;
-    private String tothesouth;
-    private String totheeast;
-    private String tothewest;
+    private String currentName;
+    private int nCoordinate;
+    private int sCoordinate;
+    private int eCoordinate;
+    private int wCoordinate;
+    private Room currentLocation; 
+    private String toTheNorth;
+    private String toTheEast;
+    private String toTheSouth;
+    private String toTheWest;
     private boolean response;
-    private int bassscripttimeline;
-    private int neilsonscripttimeline; //script timelines are used to keep track of where players are in the storyline 
-    private int burtonscripttimeline;
-    private int lawnscripttimeline;
+    private int bassScriptTimeline;
+    private int neilsonScriptTimeline; //script timelines are used to keep track of where players are in the storyline 
+    private int burtonScriptTimeline;
+    private int lawnScriptTimeline;
     private Item duffel;
     private Item key;
     private Item flashlight;
@@ -51,34 +51,34 @@ public class Game {
      * @param location the users current location 
      */
     public void script(int location) {
-        currentlocation = map.get(location);
-        currentname = currentlocation.getName();
-        ncoordinate = currentlocation.getN();
-        if (ncoordinate == -1) {
-            tothenorth = "nothing";
+        currentLocation = map.get(location);
+        currentName = currentLocation.getName();
+        nCoordinate = currentLocation.getN();
+        if (nCoordinate == -1) {
+            toTheNorth = "nothing";
         } else {
-            tothenorth = map.get(ncoordinate).getName();
+            toTheNorth = map.get(nCoordinate).getName();
         }
-        scoordinate = currentlocation.getS();
-        if (scoordinate == -1) {
-            tothesouth = "nothing";
+        sCoordinate = currentLocation.getS();
+        if (sCoordinate == -1) {
+            toTheSouth = "nothing";
         } else {
-            tothesouth = map.get(scoordinate).getName();
+            toTheSouth = map.get(sCoordinate).getName();
         }
-        ecoordinate = currentlocation.getE();
-        if (ecoordinate == -1) {
-            totheeast = "nothing";
+        eCoordinate = currentLocation.getE();
+        if (eCoordinate == -1) {
+            toTheEast = "nothing";
         } else {
-            totheeast = map.get(ecoordinate).getName();
+            toTheEast = map.get(eCoordinate).getName();
         }
-        wcoordinate = currentlocation.getW();
-        if (wcoordinate == -1) {
-            tothewest = "nothing";
+        wCoordinate = currentLocation.getW();
+        if (wCoordinate == -1) {
+            toTheWest = "nothing";
         } else {
-            tothewest = map.get(wcoordinate).getName();
+            toTheWest = map.get(wCoordinate).getName();
         }
         System.out.println("\n");
-        System.out.println("\033[3m"+"Welcome to " + currentname + ". To the North is " + tothenorth + ". To the East is " + totheeast + ". To the South is " + tothesouth + ". To the West is " + tothewest + "." + "\033[0m");
+        System.out.println("\033[3m"+"Welcome to " + currentName + ". To the North is " + toTheNorth + ". To the East is " + toTheEast + ". To the South is " + toTheSouth + ". To the West is " + toTheWest + "." + "\033[0m");
         System.out.println("\n");
     }
 
@@ -87,39 +87,39 @@ public class Game {
      * function that handles all of the storyline and item interaction depening on what room the user is in as well as their choices
      * @param userinputt the user input from the scanner
      */
-    public void buildingscripts(String userinputt) {
+    public void buildingscripts(String userInput) {
         
         //storylines contain multiple adventures/choices and ask prompts based on user choice 
 
         //if the user is in bass hall (starting location)
         if (myUser.getLocation() == 1) {
-            if (burtonscripttimeline == 2) {
-                burtonscripttimeline = 3;
+            if (burtonScriptTimeline == 2) {
+                burtonScriptTimeline = 3;
             } 
-            if ((bassscripttimeline == 1 || bassscripttimeline == 2) && (userinputt == "s" || userinputt == "e")) {
+            if ((bassScriptTimeline == 1 || bassScriptTimeline == 2) && (userInput == "s" || userInput == "e")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
-            } else if (bassscripttimeline == 0) {
-                bassscripttimeline = 1;
+            } else if (bassScriptTimeline == 0) {
+                bassScriptTimeline = 1;
                 System.out.println("Upon entrance to Bass Hall, you encounter students studying quietly in the foyer area and a classroom you peek your head into. Do you want to further explore the first floor (1) or go to the second floor (2)?");
-            } else if (bassscripttimeline == 1) {
-                if (userinputt == "yes" || userinputt == "no") {
+            } else if (bassScriptTimeline == 1) {
+                if (userInput == "yes" || userInput == "no") {
                     System.out.println("Invalid response, please try again with 1 or 2.");
-                } else if (userinputt == "1" || userinputt == "2") {
+                } else if (userInput == "1" || userInput == "2") {
                     if (response == true) {
-                        bassscripttimeline = 2;
+                        bassScriptTimeline = 2;
                         System.out.println("There are groups of students in all the classrooms on the second floor of Bass Hall. They are all talking loudly enough for you to hear in the hallway. You hear one of them mention campo being at Burton Hall. Do you want to go see what's going on? (yes/no)");
                     } else {
-                        bassscripttimeline = 2;
+                        bassScriptTimeline = 2;
                         System.out.println("It is eerily quiet through the rest of the first floor. Once you reach the end of the hallway, you turn back. As you are walking back to the entrance, you hear someone say that campo is currently at Burton. Do you want to go investigate? (yes/no)");
                     }
                 } else {
-                    bassscripttimeline = 0;
-                    buildingscripts(userinputt);
+                    bassScriptTimeline = 0;
+                    buildingscripts(userInput);
                 } 
-            } else if (bassscripttimeline == 2) {
-                if (userinputt == "yes" || userinputt == "no") {
+            } else if (bassScriptTimeline == 2) {
+                if (userInput == "yes" || userInput == "no") {
                     if (response == true) {
-                        bassscripttimeline = 3;
+                        bassScriptTimeline = 3;
                         System.out.println("You follow all the students to Burton Hall.");
                         myUser.move("w", map);
                         script(myUser.getLocation());
@@ -131,79 +131,79 @@ public class Game {
                 } else {
                     System.out.println("Invalid response. Please use yes or no.");
                 }
-            } else if (bassscripttimeline == 3) {
+            } else if (bassScriptTimeline == 3) {
                 System.out.println("Nothing has changed in Bass Hall. It is still quiet and students are still studying. Where do you want to go next?");
             }
         }
 
         // if the user is in Neilson library
         else if(myUser.getLocation() == 0){
-            if (burtonscripttimeline == 2) {
-                burtonscripttimeline = 3;
+            if (burtonScriptTimeline == 2) {
+                burtonScriptTimeline = 3;
             } 
-            if ((neilsonscripttimeline >0) && (userinputt == "n" || userinputt == "e")) {
+            if ((neilsonScriptTimeline >0) && (userInput == "n" || userInput == "e")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
-            } else if (neilsonscripttimeline==0){
+            } else if (neilsonScriptTimeline==0){
                 System.out.println("Neilson is locked do you have a key to open the door? yes/no");
-                neilsonscripttimeline=1;
-            } else if (neilsonscripttimeline==1){
-                if (userinputt == "1" || userinputt == "2") {
+                neilsonScriptTimeline=1;
+            } else if (neilsonScriptTimeline==1){
+                if (userInput == "1" || userInput == "2") {
                     System.out.println("Invalid response. Please use yes or no.");
                 } else {
                     if (response){
                         System.out.println("You made it to the library! It's pitch black and you can't see anything. Do you have a flashlight to use? (1) or will you continue in the dark? (2)");
-                        neilsonscripttimeline=2;
+                        neilsonScriptTimeline=2;
                     } else {
                         System.out.println("go find the key!!");
-                        neilsonscripttimeline=0;
+                        neilsonScriptTimeline=0;
                     }
                 }
-            } else if (neilsonscripttimeline==2) { 
-                if (userinputt == "yes" || userinputt == "no") {
+            } else if (neilsonScriptTimeline==2) { 
+                if (userInput == "yes" || userInput == "no") {
                     System.out.println("Invalid response. Please use 1 or 2.");
                 } else if (response==false && myUser.getInventory().contains(flashlight)){
-                    neilsonscripttimeline=3;
+                    neilsonScriptTimeline=3;
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
                 } else {
                     System.out.println("it's dark and the ghosts got you");
                     myUser.setAlive(false);
                 }
-            } else if (neilsonscripttimeline==3) {
-                if (userinputt == "yes" || userinputt == "no") {
+            } else if (neilsonScriptTimeline==3) {
+                if (userInput == "yes" || userInput == "no") {
                     System.out.println("Invalid response. Please use 1 or 2.");
                 } else if (response==false){
                    System.out.println("In the elevator you have met a ghost-");
                    System.out.println("Hello there! I didn't know they let humans in after dark- would you like to take a rest with me these books are making me awfully sleepy (1) or no (2)");
-                   neilsonscripttimeline=4;
+                   neilsonScriptTimeline=4;
                 } else {
                     System.out.println("the stairs have taken you back to the lobby? that's weird");
-                    neilsonscripttimeline = 3;
+                    neilsonScriptTimeline = 3;
                     System.out.println("You are in the front foyer of Neilson again, do you take the elevator (1) or the stairs (2)?");
                 }
-            } else if (neilsonscripttimeline==4){
-                if (userinputt == "yes" || userinputt == "no") {
+            } else if (neilsonScriptTimeline==4){
+                if (userInput == "yes" || userInput == "no") {
                     System.out.println("Invalid response. Please use 1 or 2.");
                 } else if(response==false) {
                     System.out.println("yikes! the ghost convinved you to fall asleep and campo caught you in the morning!");
                     myUser.setAlive(false);
                 } else {
-                    neilsonscripttimeline=5;
+                    neilsonScriptTimeline=5;
                     System.out.println("The ghost lets out a sob and mysteriously floats away");
                     System.out.println("ding! You have made it to the third floor!!");
                     System.out.println("The doors open- to your right is a closed room and to your left is the classics room do you want to go in? yes/no");
                 }
-            } else if (neilsonscripttimeline==5) {
-                if (userinputt == "1" || userinputt == "2") {
+            } else if (neilsonScriptTimeline==5) {
+                if (userInput == "1" || userInput == "2") {
                     System.out.println("Invalid response. Please use yes or no.");
                 } else if (response) {
                     System.out.println("The rare books collection is sitting in front of you do you want to put it in your duffel (1) or leave(2)");
-                    neilsonscripttimeline=6;
+                    neilsonScriptTimeline=6;
                 } else {
                     System.out.println("then why are you playing?!!");
                     myUser.setAlive(false);
                 }
-            } else if (neilsonscripttimeline==6) {
-                if (userinputt == "yes" || userinputt == "no") {
+            } else if (neilsonScriptTimeline==6) {
+                if (userInput == "yes" || userInput == "no") {
                     System.out.println("Invalid response. Please use 1 or 2.");
                 } else if (response==false  && myUser.getInventory().contains(duffel)){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
@@ -217,14 +217,16 @@ public class Game {
         
         // if the user is in burton 
         } else if (myUser.getLocation() == 2) {
-            if ((burtonscripttimeline > 0 && burtonscripttimeline < 3) && (userinputt == "s" || userinputt == "w")) {
+            if ((burtonScriptTimeline > 0 && burtonScriptTimeline < 3) && (userInput == "s" || userInput == "w")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
-            } else if (burtonscripttimeline == 0) {
-                burtonscripttimeline = 1;
+            } else if (burtonScriptTimeline == 0) {
+                burtonScriptTimeline = 1;
                 System.out.println("Campo is inside of Burton. Upon investigation, you see that someone broke the fish and crab tank by the entrance. Water is everywhere and there is a lot of chaos. You notice that a campo officer has dropped their keys. Do you want to give them back (1) or keep them (2)?");
-            } else if (burtonscripttimeline == 1) {
-                if (response == true) {
-                    burtonscripttimeline = 2;
+            } else if (burtonScriptTimeline == 1) {
+                if (userInput == "yes" || userInput == "no") {
+                    System.out.println("Invalid response. Please use 1 or 2.");
+                } else if (response == true) {
+                    burtonScriptTimeline = 2;
                     myUser.getInventory().add(key);
                     map.get(0).setLocked(false);
                     System.out.println("You have pocketed the keys and seem to have gotten away with it. Where do you want to go next?");
@@ -232,7 +234,10 @@ public class Game {
                     System.out.println("You give campo the keys and they think that you were trying to steal them. They detain you for further questioning. You have failed this quest.");
                     myUser.setAlive(false);
                 } 
-            } else if (burtonscripttimeline == 3) {
+            } else if (burtonScriptTimeline == 3) {
+                if (userInput == "yes" || userInput == "no" || userInput == "1" || userInput == "2") {
+                    System.out.println("Invalid response. Please use 1 or 2.");
+                } else
                 System.out.println("The mess has been cleaned up. Campo is still here looking for their missing keys. They know you've taken them, and you are detained. You have failed this quest.");
                 myUser.setAlive(false);
                 }       
@@ -240,34 +245,33 @@ public class Game {
         
         // if the user is on the lawn 
         else if (myUser.getLocation() == 3) {
-            if (burtonscripttimeline == 2) {
-                burtonscripttimeline = 3;
+            if (burtonScriptTimeline == 2) {
+                burtonScriptTimeline = 3;
             } 
-            if ((lawnscripttimeline > 0 && lawnscripttimeline <5) && (userinputt == "n" || userinputt == "w")) {
+            if ((lawnScriptTimeline > 0 && lawnScriptTimeline <5) && (userInput == "n" || userInput == "w")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
-            } else if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
-                lawnscripttimeline = 1;
-                // script(myUser.location);
+            } else if (lawnScriptTimeline == 0 || lawnScriptTimeline == 2 || lawnScriptTimeline == 4) {
+                lawnScriptTimeline = 1;
                 System.out.println("There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag. Do you want to investigate? (yes/no)");
-            } else if (lawnscripttimeline == 1) {
+            } else if (lawnScriptTimeline == 1) {
                 if (response == true) {
-                    lawnscripttimeline = 3;
+                    lawnScriptTimeline = 3;
                     System.out.println("Its a duffel bag of some kind! It appears to have a flashlight in it. Do you want to take the bag and flashlight? (yes/no)");
                 } else {
-                    lawnscripttimeline = 2;
+                    lawnScriptTimeline = 2;
                     System.out.println("No investigating today! Where to next?");
                 }
-            } else if (lawnscripttimeline == 3) {
+            } else if (lawnScriptTimeline == 3) {
                 if (response == true) {
                     myUser.getInventory().add(duffel);
                     myUser.getInventory().add(flashlight);
-                    lawnscripttimeline = 5;
+                    lawnScriptTimeline = 5;
                     System.out.println("Congrats, you have obtained a duffel bag and a flashlight! Where to next?");
                 } else {
-                    lawnscripttimeline = 4;
+                    lawnScriptTimeline = 4;
                     System.out.println("Okay we will leave that there. Where to next?");
                 }
-            } else if (lawnscripttimeline == 5) {
+            } else if (lawnScriptTimeline == 5) {
                 System.out.println("There is nothing here. It's quite dark out. Where do you want to go next?");
             }
         
@@ -305,10 +309,10 @@ public class Game {
         Game myGame= new Game();
         
         // all of the timlines for the scripts start at 0 
-        myGame.bassscripttimeline = 0;
-        myGame.burtonscripttimeline = 0;
-        myGame.neilsonscripttimeline = 0;
-        myGame.lawnscripttimeline = 0;
+        myGame.bassScriptTimeline = 0;
+        myGame.burtonScriptTimeline = 0;
+        myGame.neilsonScriptTimeline = 0;
+        myGame.lawnScriptTimeline = 0;
 
         //This is a "flag" to let us know when the loop should end
         boolean stillPlaying = true;
@@ -343,11 +347,11 @@ public class Game {
             
             // if the user wants to go north 
             if (userResponse.equals("n")) {
-                myGame.neilsonscripttimeline = 0;
-                if (myGame.bassscripttimeline < 3) {
-                    myGame.bassscripttimeline = 0;
-                } if (myGame.burtonscripttimeline < 2){
-                    myGame.burtonscripttimeline = 0;
+                myGame.neilsonScriptTimeline = 0;
+                if (myGame.bassScriptTimeline < 3) {
+                    myGame.bassScriptTimeline = 0;
+                } if (myGame.burtonScriptTimeline < 2){
+                    myGame.burtonScriptTimeline = 0;
                 }
 
                 // move them north 
@@ -359,11 +363,11 @@ public class Game {
             
             // if the user wants to go south 
             } else if (userResponse.equals("s")) {
-                myGame.neilsonscripttimeline = 0;
-                if (myGame.bassscripttimeline < 3) {
-                    myGame.bassscripttimeline = 0;
-                } if (myGame.burtonscripttimeline < 2){
-                    myGame.burtonscripttimeline = 0;
+                myGame.neilsonScriptTimeline = 0;
+                if (myGame.bassScriptTimeline < 3) {
+                    myGame.bassScriptTimeline = 0;
+                } if (myGame.burtonScriptTimeline < 2){
+                    myGame.burtonScriptTimeline = 0;
                 }
                 myGame.myUser.move("s", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
@@ -371,11 +375,11 @@ public class Game {
             
             // if the user wants to go east 
             } else if (userResponse.equals("e")) {
-                myGame.neilsonscripttimeline = 0;
-                if (myGame.bassscripttimeline < 3) {
-                    myGame.bassscripttimeline = 0;
-                } if (myGame.burtonscripttimeline < 2){
-                    myGame.burtonscripttimeline = 0;
+                myGame.neilsonScriptTimeline = 0;
+                if (myGame.bassScriptTimeline < 3) {
+                    myGame.bassScriptTimeline = 0;
+                } if (myGame.burtonScriptTimeline < 2){
+                    myGame.burtonScriptTimeline = 0;
                 }
                 myGame.myUser.move("e", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
@@ -383,11 +387,11 @@ public class Game {
             
             // if the user wants to go west 
             } else if (userResponse.equals("w")) {
-                myGame.neilsonscripttimeline = 0;
-                if (myGame.bassscripttimeline < 3) {
-                    myGame.bassscripttimeline = 0;
-                } if (myGame.burtonscripttimeline < 2){
-                    myGame.burtonscripttimeline = 0;
+                myGame.neilsonScriptTimeline = 0;
+                if (myGame.bassScriptTimeline < 3) {
+                    myGame.bassScriptTimeline = 0;
+                } if (myGame.burtonScriptTimeline < 2){
+                    myGame.burtonScriptTimeline = 0;
                 }
                 myGame.myUser.move("w", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
