@@ -1,9 +1,9 @@
 import java.util.ArrayList; 
 public class User {
 
-    private ArrayList<Item> inventory;
+    private ArrayList<Item> inventory; //inventory is an array list of items 
     private int location;   //index of the arraylist that corresponds to the room object 
-    private boolean alive;
+    private boolean alive; //helps to determine if gameplay can continue or not 
 
     /**
      * constructor for the user that initializes the inventory and their first location 

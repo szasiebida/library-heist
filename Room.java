@@ -1,10 +1,10 @@
 public class Room {
 
-    private int n;
-    private int s;
+    private int n; //what room index is to the north 
+    private int s; //what room index is to the south
     private int e;
     private int w;
-    private String name;
+    private String name; 
     private String description;
     private boolean locked;
 
@@ -33,7 +33,7 @@ public class Room {
 
     /**
      * getter for north integer
-     * @return the integer related room that is north
+     * @return the integer related to the room that is north
      */
     public int getN(){
         return this.n;
@@ -41,7 +41,7 @@ public class Room {
 
     /**
      * getter for south integer
-     * @return the integer related room that is south
+     * @return the integer related to the room that is south
      */
     public int getS(){
         return this.s;
@@ -49,7 +49,7 @@ public class Room {
 
     /**
      * getter for east integer
-     * @return the integer related room that is east
+     * @return the integer related to the room that is east
      */
     public int getE(){
         return this.e;
@@ -57,7 +57,7 @@ public class Room {
 
     /**
      * getter for west integer
-     * @return the integer related room that is west
+     * @return the integer related to the room that is west
      */
     public int getW(){
         return this.w;
