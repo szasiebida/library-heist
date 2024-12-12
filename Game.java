@@ -218,7 +218,7 @@ public class Game {
 
             }
         } else if (myUser.location == 2) {
-            if ((burtonscripttimeline > 0 && burtonscripttimeline <= 3) && (userinputt == "s" || userinputt == "w")) {
+            if ((burtonscripttimeline > 0 && burtonscripttimeline < 3) && (userinputt == "s" || userinputt == "w")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (burtonscripttimeline == 0) {
                 burtonscripttimeline = 1;
