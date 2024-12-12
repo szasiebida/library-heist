@@ -95,13 +95,15 @@ public class Game {
     public void buildingscripts(String userinputt) {
         //use yes no instead of y/n
         if (myUser.location == 1) {
+            if (burtonscripttimeline == 2) {
+                burtonscripttimeline = 3;
+            } 
             if ((bassscripttimeline == 1 || bassscripttimeline == 2) && (userinputt == "s" || userinputt == "e")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (bassscripttimeline == 0) {
                 bassscripttimeline = 1;
                 System.out.println("Upon entrance to Bass Hall, you encounter students studying quietly in the foyer area and a classroom you peek your head into. Do you want to further explore the first floor (1) or go to the second floor (2)?");
-            }
-            else if (bassscripttimeline == 1) {
+            } else if (bassscripttimeline == 1) {
                 if (userinputt == "yes" || userinputt == "no") {
                     System.out.println("Invalid response, please try again with 1 or 2.");
                 } else if (userinputt == "1" || userinputt == "2") {
@@ -136,7 +138,11 @@ public class Game {
                 System.out.println("Nothing has changed in Bass Hall. It is still quiet and students are still studying. Where do you want to go next?");
             }
         }
+
         else if(myUser.location == 0){
+            if (burtonscripttimeline == 2) {
+                burtonscripttimeline = 3;
+            } 
             if ((neilsonscripttimeline >0) && (userinputt == "n" || userinputt == "e")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (neilsonscripttimeline==0){
@@ -199,8 +205,7 @@ public class Game {
                     System.out.println("then why are you playing?!!");
                     myUser.alive=false;
                 }
-
-            }else if (neilsonscripttimeline==6) {
+            } else if (neilsonscripttimeline==6) {
                 if (userinputt == "yes" || userinputt == "no") {
                     System.out.println("Invalid response. Please use 1 or 2.");
                 } else if (response==false  && myUser.inventory.contains(duffel)){
@@ -213,11 +218,10 @@ public class Game {
 
             }
         } else if (myUser.location == 2) {
-            if ((burtonscripttimeline > 0 && burtonscripttimeline <= 2) && (userinputt == "s" || userinputt == "w")) {
+            if ((burtonscripttimeline > 0 && burtonscripttimeline <= 3) && (userinputt == "s" || userinputt == "w")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (burtonscripttimeline == 0) {
                 burtonscripttimeline = 1;
-                //script(2);
                 System.out.println("Campo is inside of Burton. Upon investigation, you see that someone broke the fish and crab tank by the entrance. Water is everywhere and there is a lot of chaos. You notice that a campo officer has dropped their keys. Do you want to give them back (1) or keep them (2)?");
             } else if (burtonscripttimeline == 1) {
                 if (response == true) {
@@ -229,11 +233,16 @@ public class Game {
                     System.out.println("You give campo the keys and they think that you were trying to steal them. They detain you for further questioning. You have failed this quest.");
                     myUser.alive=false;
                 } 
-            } else if (burtonscripttimeline == 2) {
+            } else if (burtonscripttimeline == 3) {
                 System.out.println("The mess has been cleaned up. Campo is still here looking for their missing keys. They know you've taken them, and you are detained. You have failed this quest.");
                 myUser.alive=false;
-                }
-        } else if (myUser.location == 3) {
+                }       
+        } 
+        
+        else if (myUser.location == 3) {
+            if (burtonscripttimeline == 2) {
+                burtonscripttimeline = 3;
+            } 
             if ((lawnscripttimeline > 0 && lawnscripttimeline <5) && (userinputt == "n" || userinputt == "w")) {
                 System.out.println("There is nothing there. Try again. Where do you want to go?");
             } else if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
