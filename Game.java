@@ -251,7 +251,7 @@ public class Game {
             } else if (lawnscripttimeline == 0 || lawnscripttimeline == 2 || lawnscripttimeline == 4) {
                 lawnscripttimeline = 1;
                 // script(myUser.location);
-                System.out.println("There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag. Do you want to investigate? (yes or no)");
+                System.out.println("There is a large section of grass with adirondack chairs. It's dark out but you can see a few trees. There is a dark object on the ground behind one of those trees. It looks like a piece of clothing or a bag. Do you want to investigate? (yes/no)");
             } else if (lawnscripttimeline == 1) {
                 if (response == true) {
                     lawnscripttimeline = 3;
@@ -274,7 +274,7 @@ public class Game {
                 System.out.println("There is nothing here. It's quite dark out. Where do you want to go next?");
             }
         } else if (myUser.location==4){
-            System.out.println("What a slippery slop you've fallen down! Why would you go to the pond at night time?? You fell in :(");
+            System.out.println("What a slippery slope you've fallen down! Why would you go to the pond at night time?? You fell in :(");
             myUser.alive=false;
         } else if (myUser.location==5){
             System.out.println("Oh no! The carnivorous plants have eaten you ");
