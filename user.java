@@ -3,7 +3,7 @@ public class User {
 
     private ArrayList<Item> inventory;
     int location;   //index of the arraylist that corresponds to the room object 
-    boolean alive;
+    private boolean alive;
 
     /**
      * constructor for the user that initializes the inventory and their first location 
@@ -69,6 +69,23 @@ public class User {
                 }
         }
         
+    }
+
+
+    /**
+     * getter for the alive attribute 
+     * @return wheter or not the user is alive
+     */
+    public boolean getAlive(){
+        return this.alive;
+    }
+
+    /**
+     * manipulator for the is alive attribute 
+     * @param isAlive whether or not the user is alive
+     */
+    public void setAlive(boolean isAlive) {
+        this.alive = isAlive;
     }
 
     /**

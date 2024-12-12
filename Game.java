@@ -119,7 +119,7 @@ public class Game {
                         buildingscripts("yes");
                     } else {
                         System.out.println("You get trampled by the students going to investigate campo's appearance");
-                        myUser.alive=false;
+                        myUser.setAlive(false);
                     }
                 } else {
                     System.out.println("Invalid response. Please use yes or no.");
@@ -160,7 +160,7 @@ public class Game {
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
                 } else {
                     System.out.println("it's dark and the ghosts got you");
-                    myUser.alive=false;
+                    myUser.setAlive(false);
                 }
             } else if (neilsonscripttimeline==3) {
                 if (userinputt == "yes" || userinputt == "no") {
@@ -179,7 +179,7 @@ public class Game {
                     System.out.println("Invalid response. Please use 1 or 2.");
                 } else if(response==false) {
                     System.out.println("yikes! the ghost convinved you to fall asleep and campo caught you in the morning!");
-                    myUser.alive=false;
+                    myUser.setAlive(false);
                 } else {
                     neilsonscripttimeline=5;
                     System.out.println("The ghost lets out a sob and mysteriously floats away");
@@ -194,17 +194,17 @@ public class Game {
                     neilsonscripttimeline=6;
                 } else {
                     System.out.println("then why are you playing?!!");
-                    myUser.alive=false;
+                    myUser.setAlive(false);
                 }
             } else if (neilsonscripttimeline==6) {
                 if (userinputt == "yes" || userinputt == "no") {
                     System.out.println("Invalid response. Please use 1 or 2.");
                 } else if (response==false  && myUser.getInventory().contains(duffel)){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
-                    myUser.alive=false;
+                    myUser.setAlive(false);
                 } else {
                     System.out.println("you have a great moral compass but you also lost sorry :()");
-                    myUser.alive=false;
+                    myUser.setAlive(false);
                 }
 
             }
@@ -222,11 +222,11 @@ public class Game {
                     System.out.println("You have pocketed the keys and seem to have gotten away with it. Where do you want to go next?");
                 } else {
                     System.out.println("You give campo the keys and they think that you were trying to steal them. They detain you for further questioning. You have failed this quest.");
-                    myUser.alive=false;
+                    myUser.setAlive(false);
                 } 
             } else if (burtonscripttimeline == 3) {
                 System.out.println("The mess has been cleaned up. Campo is still here looking for their missing keys. They know you've taken them, and you are detained. You have failed this quest.");
-                myUser.alive=false;
+                myUser.setAlive(false);
                 }       
         } 
         
@@ -263,16 +263,16 @@ public class Game {
             }
         } else if (myUser.location==4){
             System.out.println("What a slippery slope you've fallen down! Why would you go to the pond at night time?? You fell in :(");
-            myUser.alive=false;
+            myUser.setAlive(false);
         } else if (myUser.location==5){
             System.out.println("Oh no! The carnivorous plants have eaten you.");
-            myUser.alive=false;
+            myUser.setAlive(false);
         } else if (myUser.location==6){
             System.out.println("You got distracted by a poetry reading and did not complete the mission, better luck next time!");
-            myUser.alive=false;
+            myUser.setAlive(false);
         } else if (myUser.location==7){
             System.out.println("You lost track of time talking with your friends! Never go to the Alumnae Gym to get anything done.");
-            myUser.alive=false;
+            myUser.setAlive(false);
         }
     }
 
@@ -378,7 +378,7 @@ public class Game {
                 }
             } else {
                 System.out.println("We don't have that function. Please try something else.");
-            } if (!myGame.myUser.alive) {
+            } if (!myGame.myUser.getAlive()) {
 
                 DisplayImage img = new DisplayImage();
                 JFrame f = new JFrame();
