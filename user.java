@@ -121,6 +121,7 @@ public class User {
             System.out.println(myItem.getName() + " has been removed from your inventory.");
             return true;
         } else 
+            System.out.println("you don't have that item");
             return false;
     }
 
@@ -137,6 +138,15 @@ public class User {
             }
         }
     }
+
+    public Item findItem(String name) {
+        for (Item item : inventory) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item;
+            } 
+        } return null;
+    }
+    
         
 
     public static void main(String[] args) {

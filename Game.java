@@ -367,8 +367,12 @@ public class Game {
                     myGame.buildingscripts("no");
             } else if (userResponse.contains("inventory")) {
                 myGame.myUser.printInventory();
-            } else if (userResponse.contains("inspect")) {
-                //
+            } else if (userResponse.contains("drop")) {
+                String [] words=userResponse.split("\\s");
+                myGame.myUser.dropItem(myGame.myUser.findItem(words[1]));
+                if (!myGame.myUser.inventory.contains(myGame.key)){
+                    myGame.map.get(0).setLocked(true);
+                }
             } else {
                 System.out.println("We don't have that function. Please try something else.");
             } if (!myGame.myUser.alive) {
@@ -388,11 +392,6 @@ public class Game {
                     break; // Exit the loop and end the game
                 }
             }
-
-
-            // if (myGame.myUser.alive==false){
-            //     System.out.println("do you want to play again?");
-            // }
 
 
         } while (stillPlaying);
