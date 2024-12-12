@@ -13,9 +13,9 @@ All rooms are connected in a grid fashion
 INVENTORY ACESS
 You can access your inventory at any time to see what you have and the function of the item in the game by typing inventory 
 
-You can drop any item by typing drop ____
+You can drop any item by typing "drop item"
 (be careful you must type exactly "key", "duffel", or "flashlight") for the command to work 
-(also note that once you drop an item you cannot pick it back up and must restart the game)
+(also note that once you drop an item you cannot pick it back up and must restart the game- since every item is needed to complete it)
 
 
 CHALLENGES
@@ -25,4 +25,4 @@ In order to sucessfully take the rare books collection you must first pick up th
 
 
 OTHER
-Weinstein, the botanic gardens, the pond, and the alumnae gym are all dead ends that well end the game! Be careful! 
+Weinstein, the botanic gardens, the pond, and the alumnae gym are all dead ends that will end the game! Be careful! 
