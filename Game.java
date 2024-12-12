@@ -17,8 +17,8 @@ public class Game {
     private String toTheSouth;
     private String toTheWest;
     private boolean response;
-    private int bassScriptTimeline;
-    private int neilsonScriptTimeline; //script timelines are used to keep track of where players are in the storyline 
+    private int bassScriptTimeline; //script timelines are used to keep track of where players are in the storyline 
+    private int neilsonScriptTimeline; 
     private int burtonScriptTimeline;
     private int lawnScriptTimeline;
     private Item duffel;
