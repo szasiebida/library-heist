@@ -14,7 +14,6 @@ public class Game {
     
     ArrayList<Room> map;
     User myUser;
-    public int location;
     public String currentname;
     public int ncoordinate;
     public int scoordinate;
