@@ -1,7 +1,7 @@
 import java.util.ArrayList; 
 public class User {
 
-    ArrayList<Item> inventory;
+    private ArrayList<Item> inventory;
     int location;   //index of the arraylist that corresponds to the room object 
     boolean alive;
 
@@ -136,7 +136,7 @@ public class User {
         } else {
             System.out.println("Your inventory contains:");
             for (Item item : inventory) {
-                System.out.println("- " + item.getName() + " which can " + item.getFunction());
+                System.out.println("- " + item.getName() + " which " + item.getFunction());
             }
         }
     }
@@ -152,6 +152,10 @@ public class User {
                 return item;
             } 
         } return null;
+    }
+    
+    public ArrayList<Item> getInventory(){
+        return this.inventory;
     }
     
         

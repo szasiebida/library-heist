@@ -45,8 +45,8 @@ public class Game {
         map.add(new Room("Alumnae Gym", "Alumnae Gym", -1, -1, -1, 1, false)); //Room 7
         this.myUser= new User(1); //player with no inventory starting in room 1, bass
         this.key= new Item("key", "unlocks Neilson");
-        this.flashlight= new Item("flashlight","make things bright");
-        this.duffel= new Item ("duffel","for bookks");
+        this.flashlight= new Item("flashlight","makes things bright");
+        this.duffel= new Item ("duffel","holds the rare books collection");
     }    
 
 
@@ -155,7 +155,7 @@ public class Game {
             } else if (neilsonscripttimeline==2) { 
                 if (userinputt == "yes" || userinputt == "no") {
                     System.out.println("Invalid response. Please use 1 or 2.");
-                } else if (response==false && myUser.inventory.contains(flashlight)){
+                } else if (response==false && myUser.getInventory().contains(flashlight)){
                     neilsonscripttimeline=3;
                     System.out.println("Good work! You are in the front foyer of Neilson, do you take the elevator (1) or the stairs (2)");
                 } else {
@@ -199,7 +199,7 @@ public class Game {
             } else if (neilsonscripttimeline==6) {
                 if (userinputt == "yes" || userinputt == "no") {
                     System.out.println("Invalid response. Please use 1 or 2.");
-                } else if (response==false  && myUser.inventory.contains(duffel)){
+                } else if (response==false  && myUser.getInventory().contains(duffel)){
                     System.out.println("congrats you win 100000000000000 now get out of here!");
                     myUser.alive=false;
                 } else {
@@ -217,7 +217,7 @@ public class Game {
             } else if (burtonscripttimeline == 1) {
                 if (response == true) {
                     burtonscripttimeline = 2;
-                    myUser.inventory.add(key);
+                    myUser.getInventory().add(key);
                     map.get(0).setLocked(false);
                     System.out.println("You have pocketed the keys and seem to have gotten away with it. Where do you want to go next?");
                 } else {
@@ -250,8 +250,8 @@ public class Game {
                 }
             } else if (lawnscripttimeline == 3) {
                 if (response == true) {
-                    myUser.inventory.add(duffel);
-                    myUser.inventory.add(flashlight);
+                    myUser.getInventory().add(duffel);
+                    myUser.getInventory().add(flashlight);
                     lawnscripttimeline = 5;
                     System.out.println("Congrats, you have obtained a duffel bag and a flashlight! Where to next?");
                 } else {
@@ -373,7 +373,7 @@ public class Game {
             } else if (userResponse.contains("drop")) {
                 String [] words=userResponse.split("\\s");
                 myGame.myUser.dropItem(myGame.myUser.findItem(words[1]));
-                if (!myGame.myUser.inventory.contains(myGame.key)){
+                if (!myGame.myUser.getInventory().contains(myGame.key)){
                     myGame.map.get(0).setLocked(true);
                 }
             } else {
