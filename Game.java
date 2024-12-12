@@ -87,7 +87,7 @@ public class Game {
      * function that handles all of the storyline and item interaction depening on what room the user is in as well as their choices
      * @param userinputt the user input from the scanner
      */
-    public void buildingscripts(String userInput) {
+    public void buildingScripts(String userInput) {
         
         //storylines contain multiple adventures/choices and ask prompts based on user choice 
 
@@ -114,7 +114,7 @@ public class Game {
                     }
                 } else {
                     bassScriptTimeline = 0;
-                    buildingscripts(userInput);
+                    buildingScripts(userInput);
                 } 
             } else if (bassScriptTimeline == 2) {
                 if (userInput == "yes" || userInput == "no") {
@@ -123,7 +123,7 @@ public class Game {
                         System.out.println("You follow all the students to Burton Hall.");
                         myUser.move("w", map);
                         script(myUser.getLocation());
-                        buildingscripts("yes");
+                        buildingScripts("yes");
                     } else {
                         System.out.println("You get trampled by the students going to investigate campo's appearance");
                         myUser.setAlive(false);
@@ -337,7 +337,7 @@ public class Game {
         System.out.println("\n"); 
         System.out.println("Your inventory is currently empty. You can access your inventory at any time by inputting inventory. You can drop items at any time by typing drop ____. Use n, s, e, w to move. You can move anywhere at any time. Respond to the game promts with yes/no or 1/2 depending on the prompt.");
         System.out.println("\n");        
-        myGame.buildingscripts("yes");
+        myGame.buildingScripts("yes");
 
 
         // do loop that gets all of the user input and calls the appropriate functions based on input 
@@ -359,7 +359,7 @@ public class Game {
                 // tell them where they are 
                 myGame.script(myGame.myUser.getLocation());
                 // play the script based on their location 
-                myGame.buildingscripts("n");
+                myGame.buildingScripts("n");
             
             // if the user wants to go south 
             } else if (userResponse.equals("s")) {
@@ -371,7 +371,7 @@ public class Game {
                 }
                 myGame.myUser.move("s", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
-                myGame.buildingscripts("s");
+                myGame.buildingScripts("s");
             
             // if the user wants to go east 
             } else if (userResponse.equals("e")) {
@@ -383,7 +383,7 @@ public class Game {
                 }
                 myGame.myUser.move("e", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
-                myGame.buildingscripts("e");
+                myGame.buildingScripts("e");
             
             // if the user wants to go west 
             } else if (userResponse.equals("w")) {
@@ -395,27 +395,27 @@ public class Game {
                 }
                 myGame.myUser.move("w", myGame.map);
                 myGame.script(myGame.myUser.getLocation());
-                myGame.buildingscripts("w");
+                myGame.buildingScripts("w");
 
             //if the user enters 1 in response to a prompt 
             } else if (userResponse.equals("1")) {
                 myGame.response = false;
-                myGame.buildingscripts("1");
+                myGame.buildingScripts("1");
             
             // if the user enters 2 in response to a prompt 
             } else if (userResponse.equals("2")) {
                 myGame.response = true;
-                myGame.buildingscripts("2");
+                myGame.buildingScripts("2");
             
             // if the user enters yes in response to a prompt 
             } else if (userResponse.equals("yes")) {
                     myGame.response = true;
-                    myGame.buildingscripts("yes");
+                    myGame.buildingScripts("yes");
 
             // if the user enters no in response to a prompt 
             } else if (userResponse.equals("no")) {
                     myGame.response = false;
-                    myGame.buildingscripts("no");
+                    myGame.buildingScripts("no");
             
             // if the users response contains the word inventory it prints out everything they currently have and the function within the game 
             } else if (userResponse.contains("inventory")) {
