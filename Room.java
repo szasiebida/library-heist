@@ -87,12 +87,17 @@ public class Room {
         return this.locked;
     }
     
+    /**
+     * manipulator for the is locked attribute 
+     * @param isLocked whether or not the room is locked 
+     */
     public void setLocked(boolean isLocked) {
         this.locked = isLocked;
     }
 
 
 
+    //main function used for testing
     public static void main(String[] args) {
         
     }

@@ -3,6 +3,11 @@ public class Item {
     private String name;
     private String function;
 
+    /**
+     * constructor for items 
+     * @param name the name of the item 
+     * @param function the function of the item in the game 
+     */
     public Item(String name, String function){
         this.name=name;
         this.function=function;
@@ -31,7 +36,7 @@ public class Item {
         System.out.println(this.getName()+" can be used to "+this.getFunction());
     }
 
-    
+    //main function used for testing 
     public static void main(String[] args) {
         
         Item key= new Item("key", "unlock neilson");

@@ -7,26 +7,26 @@ import javax.swing.JFrame;
 
 public class Game {
     
-    ArrayList<Room> map;
-    User myUser;
-    public String currentname;
-    public int ncoordinate;
-    public int scoordinate;
-    public int ecoordinate;
-    public int wcoordinate;
-    Room currentlocation; //to get currentlocation myUser.location() --> room object myUser.getname()--> name of the room
-    public String tothenorth;
-    public String tothesouth;
-    public String totheeast;
-    public String tothewest;
-    public boolean response;
-    public int bassscripttimeline;
-    public int neilsonscripttimeline;
-    public int burtonscripttimeline;
-    public int lawnscripttimeline;
-    Item duffel;
-    Item key;
-    Item flashlight;
+    private ArrayList<Room> map;
+    private User myUser;
+    private String currentname;
+    private int ncoordinate;
+    private int scoordinate;
+    private int ecoordinate;
+    private int wcoordinate;
+    private Room currentlocation; 
+    private String tothenorth;
+    private String tothesouth;
+    private String totheeast;
+    private String tothewest;
+    private boolean response;
+    private int bassscripttimeline;
+    private int neilsonscripttimeline;
+    private int burtonscripttimeline;
+    private int lawnscripttimeline;
+    private Item duffel;
+    private Item key;
+    private Item flashlight;
 
 
     /**

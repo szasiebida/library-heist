@@ -5,6 +5,10 @@ public class User {
     int location;   //index of the arraylist that corresponds to the room object 
     boolean alive;
 
+    /**
+     * constructor for the user that initializes the inventory and their first location 
+     * @param location the initial loaction of the user 
+     */
     public User(int location) {
         this.inventory=new ArrayList<Item>();
         this.location=location;
@@ -94,12 +98,10 @@ public class User {
         dropItem(myitem);
     }
 
-    //returns false if there is not enough space in the inventory to grab the item 
-    //i imagine there could be a print statement related to the boolean value outputed so if false then "you can't add that"
     /**
      * function that adds an item to the players inventory if there is space 
      * @param myItem the item the player wants to pick up 
-     * @return if the item grab was successful it will return true 
+     * @return if the item grab was successful it will return true, returns false if there is not enough space in the inventory to grab the item 
      */
     public boolean grabItem(Item myItem){
         if (inventory.size()<3){
@@ -139,6 +141,11 @@ public class User {
         }
     }
 
+    /**
+     * function that looks for an item in the inventory based on the name 
+     * @param name the name of the item as a string 
+     * @return returns the item object based on the name string 
+     */
     public Item findItem(String name) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -148,7 +155,7 @@ public class User {
     }
     
         
-
+    //main function is used for testing 
     public static void main(String[] args) {
         User myUser= new User(1);
         Item key= new Item("key", "open neilson");
