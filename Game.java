@@ -265,13 +265,13 @@ public class Game {
             System.out.println("What a slippery slope you've fallen down! Why would you go to the pond at night time?? You fell in :(");
             myUser.alive=false;
         } else if (myUser.location==5){
-            System.out.println("Oh no! The carnivorous plants have eaten you ");
+            System.out.println("Oh no! The carnivorous plants have eaten you.");
             myUser.alive=false;
         } else if (myUser.location==6){
             System.out.println("You got distracted by a poetry reading and did not complete the mission, better luck next time!");
             myUser.alive=false;
         } else if (myUser.location==7){
-            System.out.println("You lost track of time talking with your friends! Never go to the Alumnae Gym to get anything done");
+            System.out.println("You lost track of time talking with your friends! Never go to the Alumnae Gym to get anything done.");
             myUser.alive=false;
         }
     }
