@@ -190,7 +190,7 @@ public class Game {
                     neilsonScriptTimeline=5;
                     System.out.println("The ghost lets out a sob and mysteriously floats away");
                     System.out.println("ding! You have made it to the third floor!!");
-                    System.out.println("The doors open- to your right is a closed room and to your left is the classics room do you want to go in? yes/no");
+                    System.out.println("The doors open- to your right is a closed room and to your left is the classics room. Do you want to go in to the classics room? yes/no");
                 }
             } else if (neilsonScriptTimeline==5) {
                 if (userInput == "1" || userInput == "2") {
